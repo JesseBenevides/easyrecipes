@@ -10,6 +10,13 @@ function RecipeContextProvider({ children }) {
       email,
       setEmail,
     },
+    food: {
+      foodList: [],
+    },
+    drink: {
+      drinkList: [],
+    },
+
   };
 
   return (

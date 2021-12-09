@@ -21,8 +21,8 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/comidas" component={ Foods } />
-      <Route path="/bebidas" component={ Drinks } />
+      <Route exact path="/comidas" component={ Foods } />
+      <Route exact path="/bebidas" component={ Drinks } />
       <Route path="/comidas/:recipeId" component={ RecipeDetails } />
       <Route path="/bebidas/:drinkId" component={ RecipeDetails } />
       <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />

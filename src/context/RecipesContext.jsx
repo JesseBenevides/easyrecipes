@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-const recipesContext = createContext({});
+const RecipesContext = createContext({});
+
+export default RecipesContext;

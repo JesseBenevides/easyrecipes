@@ -7,7 +7,7 @@ import '../App.css';
 
 function Footer() {
   return (
-    <div data-testid="footer" id="Footer">
+    <div data-testid="footer" className="Footer">
       <Link src={ drinkIcon } to="/bebidas" data-testid="drinks-bottom-btn">
         <img src={ drinkIcon } alt="drinks" />
       </Link>

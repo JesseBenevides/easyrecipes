@@ -4,19 +4,20 @@ import RecipesContext from './RecipesContext';
 
 function RecipeContextProvider({ children }) {
   const [email, setEmail] = useState('');
+  const [foodList, setFoodList] = useState([]);
+  const [drinkList, setDrinkList] = useState([]);
 
   const contextValue = {
     user: {
       email,
       setEmail,
     },
-    food: {
-      foodList: [],
+    recipes: {
+      foodList,
+      setFoodList,
+      drinkList,
+      setDrinkList,
     },
-    drink: {
-      drinkList: [],
-    },
-
   };
 
   return (

@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 import useAPI from '../hooks/useAPI';
-import fetchDrinkByName from '../services/drinkAPI';
+import { fetchDrinkByName } from '../services/drinkAPI';
 
 function Drinks() {
   const { recipes: { drinkList, setDrinkList } } = useContext(RecipesContext);
+  const INICIAL_DRINKLIST_LENGTH = 12;
 
-  useAPI(fetchDrinkByName, setDrinkList, '');
+  useAPI(fetchDrinkByName, setDrinkList, '', INICIAL_DRINKLIST_LENGTH);
 
   const renderDrinkCard = () => (
     drinkList.map((recipe, index) => (

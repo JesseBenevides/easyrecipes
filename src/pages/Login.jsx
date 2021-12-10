@@ -7,30 +7,30 @@ function Login() {
   const [disable, setDisable] = useState(true);
   const history = useHistory();
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-    validate()
-  }
-
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
-    validate()
-  }
-
   const validate = () => {
     const NUMERO_MINIMO = 6;
     const regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
     if ((regex.test(email)) && (password.length >= NUMERO_MINIMO)) {
-      setDisable(false)
+      setDisable(false);
     }
-  }
-  
-  const handleClick = () => {    
+  };
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+    validate();
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+    validate();
+  };
+
+  const handleClick = () => {
     localStorage.setItem('mealsToken', JSON.stringify(1));
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
-    localStorage.setItem('user', JSON.stringify({email:(email)}));
-    history.push('/comidas')
-  }
+    localStorage.setItem('user', JSON.stringify({ email }));
+    history.push('/comidas');
+  };
 
   return (
     <div>

@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
 
-function useAPI(fetchFunction, setState, searchName) {
+function useAPI(fetchFunction, setState, searchName, resultLength) {
   useEffect(() => {
     async function getList() {
-      const NUMBER_OF_RECIPES = 12;
       const results = await fetchFunction(searchName);
-      results.length = NUMBER_OF_RECIPES;
+      if (resultLength) results.length = resultLength;
       setState(results);
     }
 
     getList();
-  }, [fetchFunction, setState, searchName]);
+  }, [fetchFunction, setState, searchName, resultLength]);
 }
 
 export default useAPI;

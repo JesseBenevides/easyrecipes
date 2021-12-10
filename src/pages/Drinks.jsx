@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 import useAPI from '../hooks/useAPI';
@@ -24,7 +25,11 @@ function Drinks() {
   return (
     <section>
       <h2>Lista de Coquetéis</h2>
-      { renderDrinkCard() }
+      <Container>
+        <Row>
+          { renderDrinkCard() }
+        </Row>
+      </Container>
     </section>
   );
 }

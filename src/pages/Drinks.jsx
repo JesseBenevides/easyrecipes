@@ -23,7 +23,8 @@ function Drinks() {
   const renderDrinkCard = () => (
     drinkList.map((recipe, index) => (
       <RecipeCard
-        key={ `${index}` }
+        key={ recipe.idDrink }
+        id={ recipe.idDrink }
         name={ recipe.strDrink }
         image={ recipe.strDrinkThumb }
         index={ index }

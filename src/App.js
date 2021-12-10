@@ -21,15 +21,15 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/comidas" component={ Foods } />
-      <Route path="/bebidas" component={ Drinks } />
+      <Route exact path="/comidas" component={ Foods } />
+      <Route exact path="/bebidas" component={ Drinks } />
       <Route path="/comidas/:recipeId" component={ RecipeDetails } />
       <Route path="/bebidas/:drinkId" component={ RecipeDetails } />
       <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
       <Route path="/bebidas/:drinkId/in-progress" component={ RecipeInProgress } />
-      <Route path="/explorar" component={ Explorer } />
-      <Route path="/explorar/comidas" component={ ExploreFoods } />
-      <Route path="/explorar/bebidas" component={ ExploreDrinks } />
+      <Route exact path="/explorar" component={ Explorer } />
+      <Route exact path="/explorar/comidas" component={ ExploreFoods } />
+      <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
       <Route
         path="/explorar/comidas/ingredientes"
         component={ ExploreFoodsByIngredients }

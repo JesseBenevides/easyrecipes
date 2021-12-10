@@ -4,7 +4,7 @@ import CategoriesFilterButtons from '../components/CategoriesFilterButtons';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 import useAPI from '../hooks/useAPI';
-import { fetchDrinkByName, fetchDrinksCategories } from '../services/drinkAPI';
+import { fetchDrinkByName, fetchDrinksCategories } from '../services/cocktailAPI';
 
 function Drinks() {
   const { recipes: {

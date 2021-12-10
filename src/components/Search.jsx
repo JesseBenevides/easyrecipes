@@ -6,11 +6,13 @@ import RecipesContext from '../context/RecipesContext';
 import { validateFirstLetterSearch,
   validateEmptyList,
   getFilteredPageData } from '../helpers/searchHelper';
+
 import {
   fetchDrinksByFirstLetter,
   fetchDrinksByIngredient,
-  fetchDrinksByName,
+  fetchDrinkByName,
 } from '../services/cocktailAPI';
+
 import {
   fetchMealByName,
   fetchMealsByIngredient,
@@ -22,12 +24,12 @@ function Search({ recipeType }) {
     recipes: { setFoodList, setDrinkList, foodList, drinkList },
   } = useContext(RecipesContext);
 
+  const isFood = recipeType === 'food';
   const [searchTerm, setSearchTerm] = useState('');
   const [searchFilter, setSearchFilter] = useState({
-    fetchCallback: fetchMealByName,
+    fetchCallback: isFood ? fetchMealByName : fetchDrinkByName,
   });
 
-  const isFood = recipeType === 'food';
   const pageData = getFilteredPageData(isFood,
     { foodList, setFoodList },
     { drinkList, setDrinkList });
@@ -78,7 +80,7 @@ function Search({ recipeType }) {
           name="filter"
           id="name-radio"
           data-testid="name-search-radio"
-          onChange={ () => onChangeFilter(isFood ? fetchMealByName : fetchDrinksByName) }
+          onChange={ () => onChangeFilter(isFood ? fetchMealByName : fetchDrinkByName) }
         />
         <Form.Check
           type="radio"

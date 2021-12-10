@@ -4,7 +4,6 @@ import { fetchMealsByFirstLetter } from '../services/mealAPI';
 export function validateFirstLetterSearch(searchTerm, fetchCallback) {
   const isFirstLetterSearch = fetchCallback === fetchMealsByFirstLetter
     || fetchCallback === fetchDrinksByFirstLetter;
-  console.log(isFirstLetterSearch && searchTerm.length !== 1);
   if (isFirstLetterSearch && searchTerm.length !== 1) {
     global.alert('Sua busca deve conter somente 1 (um) caracter');
   }

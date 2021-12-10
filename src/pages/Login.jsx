@@ -8,7 +8,7 @@ function Login() {
   const [disable, setDisable] = useState(true);
   const history = useHistory();
 
-  const { user } = useContext(RecipesContext)
+  const { user } = useContext(RecipesContext);
 
   const validate = () => {
     const NUMERO_MINIMO = 6;

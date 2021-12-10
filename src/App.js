@@ -20,16 +20,16 @@ import FavoriteRecipes from './pages/FavoriteRecipes';
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={ Login } />
-      <Route exact path="/comidas" component={ Foods } />
-      <Route exact path="/bebidas" component={ Drinks } />
-      <Route path="/comidas/:recipeId" component={ RecipeDetails } />
-      <Route path="/bebidas/:drinkId" component={ RecipeDetails } />
-      <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
-      <Route path="/bebidas/:drinkId/in-progress" component={ RecipeInProgress } />
-      <Route path="/explorar" component={ Explorer } />
-      <Route path="/explorar/comidas" component={ ExploreFoods } />
-      <Route path="/explorar/bebidas" component={ ExploreDrinks } />
+      <Route exact path="/" render={ Login } />
+      <Route exact path="/comidas" render={ Foods } />
+      <Route exact path="/bebidas" render={ Drinks } />
+      <Route path="/comidas/:recipeId" render={ RecipeDetails } />
+      <Route path="/bebidas/:drinkId" render={ RecipeDetails } />
+      <Route path="/comidas/:recipeId/in-progress" render={ RecipeInProgress } />
+      <Route path="/bebidas/:drinkId/in-progress" render={ RecipeInProgress } />
+      <Route exact path="/explorar" render={ Explorer } />
+      <Route exact path="/explorar/comidas" render={ ExploreFoods } />
+      <Route exact path="/explorar/bebidas" render={ ExploreDrinks } />
       <Route
         path="/explorar/comidas/ingredientes"
         component={ ExploreFoodsByIngredients }

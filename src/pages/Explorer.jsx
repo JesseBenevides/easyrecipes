@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Explorer() {
@@ -11,6 +12,7 @@ function Explorer() {
         >
           Explorar Comidas
         </button>
+      <Header pageTitle="Explorar" />
       <Footer />
     </div>
   );

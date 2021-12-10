@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Search from './Search';
 
-function Header({ pageTitle, hasSearch }) {
+function Header({ pageTitle, hasSearch, recipeType }) {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
@@ -29,14 +29,19 @@ function Header({ pageTitle, hasSearch }) {
           />
         </Button>
       ) }
-      { showSearch && <Search /> }
+      { showSearch && <Search recipeType={ recipeType } /> }
     </Navbar>
   );
 }
 
 Header.propTypes = {
-  pageTitle: PropTypes.string.isRequired,
   hasSearch: PropTypes.bool.isRequired,
+  pageTitle: PropTypes.string.isRequired,
+  recipeType: PropTypes.string,
+};
+
+Header.defaultProps = {
+  recipeType: '',
 };
 
 export default Header;

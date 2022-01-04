@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 function RecipeCard(props) {
   const { name, image, index, id, type } = props;
-  console.log(id, type);
 
   return (
     <Link

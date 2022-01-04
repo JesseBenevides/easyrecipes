@@ -43,9 +43,14 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
       : getAllRecipes(fetchDrinkByName, setDrinkList);
   }
 
-  function handleCategoriesButtonClick({ target: { name } }) {
-    getRecipesByCategory(name, recipeType)
+  function handleCategoriesButtonClick({ target: { name, classList } }) {
+    if(classList.contains('selected')) {
+      handleButtonAllClick();
+    } else getRecipesByCategory(name, recipeType);
+
+    classList.toggle('selected');
   }
+
   return (
     <Container>
       <Row>

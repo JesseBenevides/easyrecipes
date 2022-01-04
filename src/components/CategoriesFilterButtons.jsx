@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
 import { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
-import { fetchMealsByCategories } from '../services/mealAPI';
-import { fetchDrinksByCategories } from '../services/cocktailAPI';
+import { fetchMealByName, fetchMealsByCategories } from '../services/mealAPI';
+import { fetchDrinkByName, fetchDrinksByCategories } from '../services/cocktailAPI';
 
 function CategoriesFilterButtons({ categoryList, recipeType }) {
   const { recipes } = useContext(RecipesContext);
@@ -32,7 +32,18 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
     }
   }
 
-  function handleClick({ target: { name } }) {
+  async function getAllRecipes(fetchFunction, setState) {
+    const recipeList = await fetchFunction('');
+    setState(recipeList);
+  }
+  
+  function handleButtonAllClick() {
+    recipeType === 'food'
+      ? getAllRecipes(fetchMealByName, setFoodList)
+      : getAllRecipes(fetchDrinkByName, setDrinkList);
+  }
+
+  function handleCategoriesButtonClick({ target: { name } }) {
     getRecipesByCategory(name, recipeType)
   }
   return (
@@ -42,6 +53,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
           <Button
             variant="secondary"
             data-testid="All-category-filter"
+            onClick={ handleButtonAllClick }
           >
             All
           </Button>
@@ -52,7 +64,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
               variant="secondary"
               data-testid={ `${category.strCategory}-category-filter` }
               name={ category.strCategory }
-              onClick={ handleClick }
+              onClick={ handleCategoriesButtonClick }
             >
               {category.strCategory}
             </Button>

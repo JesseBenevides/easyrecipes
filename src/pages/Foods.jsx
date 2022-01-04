@@ -35,6 +35,7 @@ function Foods() {
             name={ recipe.strMeal }
             image={ recipe.strMealThumb }
             index={ index }
+            type="comidas"
           />
         ))
       );

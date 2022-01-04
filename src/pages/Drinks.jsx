@@ -36,6 +36,7 @@ function Drinks() {
             name={ recipe.strDrink }
             image={ recipe.strDrinkThumb }
             index={ index }
+            type="bebidas"
           />
         ))
       );

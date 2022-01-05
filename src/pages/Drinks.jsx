@@ -51,7 +51,6 @@ function Drinks() {
     <>
       <Header pageTitle="Bebidas" hasSearch recipeType="drink" />
       <section>
-        <h2>Lista de Coquetéis</h2>
         <Container>
           <Row>
             {renderDrinkCategories()}

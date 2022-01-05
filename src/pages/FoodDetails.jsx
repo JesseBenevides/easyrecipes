@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useLocation, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
 import Instructions from '../components/DetailsPage/Instructions';
 import Recommended from '../components/DetailsPage/Recommended';
+import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
-import { fetchMealByID } from '../services/mealAPI';
+import { fetchMealByID, fetchRecommendedDrinks } from '../services/mealAPI';
 
-function FoodDetails({ match: { params: { recipeId } } }) {
+function FoodDetails() {
   const [recipeResponse, setRecipeResponse] = useState({});
+  const { recipeId } = useParams();
+  const { pathname } = useLocation();
+  const { recipes:
+     { recommendedFoods, setRecommendedFoods },
+  } = useContext(RecipesContext);
 
   useEffect(() => {
     fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
-  }, []);
+    fetchRecommendedDrinks().then((meals) => setRecommendedFoods(meals));
+    window.scrollTo(0, 0);
+  }, [recipeId]);
 
   const recipe = recipeResponse ? recipeResponse[0] : null;
   const ingredientList = mapIngredientList(recipe);
@@ -23,7 +33,7 @@ function FoodDetails({ match: { params: { recipeId } } }) {
   } = recipe || {};
 
   return (
-    <div>
+    <div className="container">
       {recipeResponse[0] && (
         <>
           <Hero thumb={ strMealThumb } category={ strCategory } title={ strMeal } />
@@ -36,74 +46,12 @@ function FoodDetails({ match: { params: { recipeId } } }) {
             title={ `${strMeal} Video` }
             data-testid="video"
           />
-          {/* <Recommended /> */}
-          <Button data-testid="start-recipe-btn" />
+          <Recommended recipes={ recommendedFoods } />
+          <Link to={`${pathname}/in-progress`} data-testid="start-recipe-btn" className="fixed-bottom btn-block pb-3">Iniciar Receita</Link>
         </>
       )}
     </div>
   );
 }
-
-const mockMeal = {
-  meals: [
-    {
-      idMeal: '52772',
-      strMeal: 'Teriyaki Chicken Casserole',
-      strDrinkAlternate: null,
-      strCategory: 'Chicken',
-      strArea: 'Japanese',
-      strInstructions:
-        'Preheat oven to 350° F. Spray a 9x13-inch baking pan with non-stick spray.\r\nCombine soy sauce, ½ cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling.\r\nMeanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat.\r\nPlace the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks.\r\n*Meanwhile, steam or cook the vegetables according to package directions.\r\nAdd the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!',
-      strMealThumb:
-        'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg',
-      strTags: 'Meat,Casserole',
-      strYoutube: 'https://www.youtube.com/watch?v=4aZr5hZXP_s',
-      strIngredient1: 'soy sauce',
-      strIngredient2: 'water',
-      strIngredient3: 'brown sugar',
-      strIngredient4: 'ground ginger',
-      strIngredient5: 'minced garlic',
-      strIngredient6: 'cornstarch',
-      strIngredient7: 'chicken breasts',
-      strIngredient8: 'stir-fry vegetables',
-      strIngredient9: 'brown rice',
-      strIngredient10: '',
-      strIngredient11: '',
-      strIngredient12: '',
-      strIngredient13: '',
-      strIngredient14: '',
-      strIngredient15: '',
-      strIngredient16: null,
-      strIngredient17: null,
-      strIngredient18: null,
-      strIngredient19: null,
-      strIngredient20: null,
-      strMeasure1: '3/4 cup',
-      strMeasure2: '1/2 cup',
-      strMeasure3: '1/4 cup',
-      strMeasure4: '1/2 teaspoon',
-      strMeasure5: '1/2 teaspoon',
-      strMeasure6: '4 Tablespoons',
-      strMeasure7: '2',
-      strMeasure8: '1 (12 oz.)',
-      strMeasure9: '3 cups',
-      strMeasure10: '',
-      strMeasure11: '',
-      strMeasure12: '',
-      strMeasure13: '',
-      strMeasure14: '',
-      strMeasure15: '',
-      strMeasure16: null,
-      strMeasure17: null,
-      strMeasure18: null,
-      strMeasure19: null,
-      strMeasure20: null,
-      strSource: null,
-      strImageSource: null,
-      strCreativeCommonsConfirmed: null,
-      dateModified: null,
-    },
-  ],
-};
 
 export default FoodDetails;

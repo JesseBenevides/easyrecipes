@@ -1,39 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { button } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-// import { fetchMealRandom } from '../services/mealAPI';
+import { fetchMealRandom } from '../services/mealAPI';
 
-function ExploreMeals() {
-  const [random] = useState([]);
-  // const returnFunction = '';
-  console.log(random);
+function ExploreMeals(props) {
+  function redirectTo(path) {
+    const { history } = props;
+    history.push(path);
+  }
+  async function getMealRandom() {
+    const mealArray = await fetchMealRandom();
+    const { idMeal } = mealArray[0];
+    redirectTo(`/comidas/${idMeal}`);
+  }
   return (
     <div>
       <Header pageTitle="Explorar" />
-      <Link to="/explorar/comidas/ingredientes" data-testid="explore-by-ingredient">
+      <button
+        type="button"
+        data-testid="explore-by-ingredient"
+        onClick={ () => redirectTo('/explorar/comidas/ingredientes') }
+      >
         Por Ingredientes
-      </Link>
+      </button>
 
-      <Link
-        to="/explorar/comidas/area"
+      <button
+        type="button"
+        onClick={ () => redirectTo('/explorar/comidas/area') }
         data-testid="explore-by-area"
       >
         Por Local de Origem
-      </Link>
+      </button>
 
-      <Link
-        to="/explorar/comidas"
+      <button
+        type="button"
         data-testid="explore-surprise"
-        // onCLick={ () => setState(fetchMealRandom()) }
+        onClick={ () => getMealRandom() }
       >
-
         Me Surpreenda!
-      </Link>
-      {console.log}
+
+      </button>
       <Footer />
     </div>
   );
 }
 
+ExploreMeals.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 export default ExploreMeals;

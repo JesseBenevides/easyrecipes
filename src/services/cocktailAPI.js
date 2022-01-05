@@ -40,9 +40,8 @@ export async function fetchDrinksByFirstLetter(firstLetter) {
   return drinks;
 }
 
-export async function fetchDrinkRandom(drinkName) {
-  const ENDPOINT = `${ENDPOINT_DRINK_RANDOM}${drinkName}`;
-  const response = await fetch(ENDPOINT);
+export async function fetchDrinkRandom() {
+  const response = await fetch(ENDPOINT_DRINK_RANDOM);
   const { drinks } = await response.json();
   return drinks;
 }

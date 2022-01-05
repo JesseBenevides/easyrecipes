@@ -43,6 +43,6 @@ export async function fetchMealsByFirstLetter(firstLetter) {
 
 export async function fetchMealRandom() {
   const response = await fetch(ENDPOINT_MEAL_RANDOM);
-  const { meals } = response.json();
+  const { meals } = await response.json();
   return meals;
 }

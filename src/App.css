@@ -67,7 +67,17 @@
   }
 }
 
+.Header {
+  background-color: #c4c4c4;
+  width: 22.5rem;
+}
+
 .Footer {
+  background-color: #c4c4c4;
   bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
   position: fixed;
+  width: 22.5rem;
 }

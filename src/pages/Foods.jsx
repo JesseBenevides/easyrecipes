@@ -50,7 +50,6 @@ function Foods() {
     <>
       <Header pageTitle="Comidas" hasSearch recipeType="food" />
       <section>
-        <h2>Lista de Comidas</h2>
         <Container>
           <Row>
             {renderFoodCategories()}

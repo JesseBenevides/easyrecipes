@@ -44,7 +44,7 @@ function Drinks() {
   };
 
   const renderDrinkCategories = () => (
-    <CategoriesFilterButtons categoryList={ drinkCategories } />
+    <CategoriesFilterButtons categoryList={ drinkCategories } recipeType="drink" />
   );
 
   return (

@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
+import Instructions from '../components/DetailsPage/Instructions';
+import Recommended from '../components/DetailsPage/Recommended';
 import mapIngredientList from '../helpers/detailsHelper';
+import { fetchMealByID } from '../services/mealAPI';
 
-function FoodDetails() {
-  const recipe = mockMeal.meals[0];
+function FoodDetails({ match: { params: { recipeId } } }) {
+  const [recipeResponse, setRecipeResponse] = useState({});
+
+  useEffect(() => {
+    fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
+  }, []);
+
+  const recipe = recipeResponse ? recipeResponse[0] : null;
   const ingredientList = mapIngredientList(recipe);
-  const { strMeal, strCategory, strMealThumb } = recipe;
+  const { strMeal,
+    strCategory, strMealThumb,
+    strInstructions,
+    strYoutube,
+  } = recipe || {};
+
   return (
     <div>
-      <Hero thumb={strMealThumb} category={strCategory} title={strMeal} />
-      <Ingredients ingredientList={ingredientList} />
+      {recipeResponse[0] && (
+        <>
+          <Hero thumb={ strMealThumb } category={ strCategory } title={ strMeal } />
+          <Ingredients ingredientList={ ingredientList } />
+          <Instructions instructions={ strInstructions } />
+          <iframe
+            width="420"
+            height="315"
+            src={ strYoutube }
+            title={ `${strMeal} Video` }
+            data-testid="video"
+          />
+          {/* <Recommended /> */}
+          <Button data-testid="start-recipe-btn" />
+        </>
+      )}
     </div>
   );
 }
@@ -18,58 +47,60 @@ function FoodDetails() {
 const mockMeal = {
   meals: [
     {
-      idMeal: '52882',
-      strMeal: 'Three Fish Pie',
+      idMeal: '52772',
+      strMeal: 'Teriyaki Chicken Casserole',
       strDrinkAlternate: null,
-      strCategory: 'Seafood',
-      strArea: 'British',
+      strCategory: 'Chicken',
+      strArea: 'Japanese',
       strInstructions:
-        'Preheat the oven to 200C/400F/Gas 6 (180C fan).\r\nPut the potatoes into a saucepan of cold salted water. Bring up to the boil and simmer until completely tender. Drain well and then mash with the butter and milk. Add pepper and taste to check the seasoning. Add salt and more pepper if necessary.\r\nFor the fish filling, melt the butter in a saucepan, add the leeks and stir over the heat. Cover with a lid and simmer gently for 10 minutes, or until soft. Measure the flour into a small bowl. Add the wine and whisk together until smooth.\r\nAdd the milk to the leeks, bring to the boil and then add the wine mixture. Stir briskly until thickened. Season and add the parsley and fish. Stir over the heat for two minutes, then spoon into an ovenproof casserole. Scatter over the eggs. Allow to cool until firm.\r\nSpoon the mashed potatoes over the fish mixture and mark with a fork. Sprinkle with cheese.\r\nBake for 30-40 minutes, or until lightly golden-brown on top and bubbling around the edges.',
+        'Preheat oven to 350° F. Spray a 9x13-inch baking pan with non-stick spray.\r\nCombine soy sauce, ½ cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling.\r\nMeanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat.\r\nPlace the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks.\r\n*Meanwhile, steam or cook the vegetables according to package directions.\r\nAdd the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!',
       strMealThumb:
-        'https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg',
-      strTags: 'Fish,Seafood,Dairy,Pie',
-      strYoutube: 'https://www.youtube.com/watch?v=Ds1Jb8H5Sg8',
-      strIngredient1: 'Potatoes',
-      strIngredient2: 'Butter',
-      strIngredient3: 'Milk',
-      strIngredient4: 'Gruy\u00e8re',
-      strIngredient5: 'Butter',
-      strIngredient6: 'Leek',
-      strIngredient7: 'Plain Flour',
-      strIngredient8: 'White Wine',
-      strIngredient9: 'Milk',
-      strIngredient10: 'Parsley',
-      strIngredient11: 'Salmon',
-      strIngredient12: 'Haddock',
-      strIngredient13: 'Smoked Haddock',
-      strIngredient14: 'Eggs',
+        'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg',
+      strTags: 'Meat,Casserole',
+      strYoutube: 'https://www.youtube.com/watch?v=4aZr5hZXP_s',
+      strIngredient1: 'soy sauce',
+      strIngredient2: 'water',
+      strIngredient3: 'brown sugar',
+      strIngredient4: 'ground ginger',
+      strIngredient5: 'minced garlic',
+      strIngredient6: 'cornstarch',
+      strIngredient7: 'chicken breasts',
+      strIngredient8: 'stir-fry vegetables',
+      strIngredient9: 'brown rice',
+      strIngredient10: '',
+      strIngredient11: '',
+      strIngredient12: '',
+      strIngredient13: '',
+      strIngredient14: '',
       strIngredient15: '',
-      strIngredient16: '',
-      strIngredient17: '',
-      strIngredient18: '',
-      strIngredient19: '',
-      strIngredient20: '',
-      strMeasure1: '1kg',
-      strMeasure2: 'Knob',
-      strMeasure3: 'Dash',
-      strMeasure4: '50g',
-      strMeasure5: '75g',
-      strMeasure6: '2 sliced',
-      strMeasure7: '75g',
-      strMeasure8: '150ml',
-      strMeasure9: '568ml',
-      strMeasure10: '2 tbs chopped',
-      strMeasure11: '250g',
-      strMeasure12: '250g',
-      strMeasure13: '250g',
-      strMeasure14: '6',
+      strIngredient16: null,
+      strIngredient17: null,
+      strIngredient18: null,
+      strIngredient19: null,
+      strIngredient20: null,
+      strMeasure1: '3/4 cup',
+      strMeasure2: '1/2 cup',
+      strMeasure3: '1/4 cup',
+      strMeasure4: '1/2 teaspoon',
+      strMeasure5: '1/2 teaspoon',
+      strMeasure6: '4 Tablespoons',
+      strMeasure7: '2',
+      strMeasure8: '1 (12 oz.)',
+      strMeasure9: '3 cups',
+      strMeasure10: '',
+      strMeasure11: '',
+      strMeasure12: '',
+      strMeasure13: '',
+      strMeasure14: '',
       strMeasure15: '',
-      strMeasure16: '',
-      strMeasure17: '',
-      strMeasure18: '',
-      strMeasure19: '',
-      strMeasure20: '',
-      strSource: 'https://www.bbc.co.uk/food/recipes/three_fish_pie_58875',
+      strMeasure16: null,
+      strMeasure17: null,
+      strMeasure18: null,
+      strMeasure19: null,
+      strMeasure20: null,
+      strSource: null,
+      strImageSource: null,
+      strCreativeCommonsConfirmed: null,
       dateModified: null,
     },
   ],

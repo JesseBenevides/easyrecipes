@@ -25,7 +25,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
       recipeList = await fetchDrinksByCategories(categoryName);
       setDrinkList(recipeList);
       break;
-      
+
     default:
       break;
     }
@@ -35,11 +35,10 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
     const recipeList = await fetchFunction('');
     setState(recipeList);
   }
-  
+
   function handleButtonAllClick() {
-    recipeType === 'food'
-      ? getAllRecipes(fetchMealByName, setFoodList)
-      : getAllRecipes(fetchDrinkByName, setDrinkList);
+    if (recipeType === 'food') getAllRecipes(fetchMealByName, setFoodList);
+    else getAllRecipes(fetchDrinkByName, setDrinkList);
   }
 
   function handleCategoriesButtonClick({ target: { name, classList } }) {

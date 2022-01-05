@@ -1,8 +1,7 @@
 /* eslint-disable indent */
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
-import { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
 import { fetchMealByName, fetchMealsByCategories } from '../services/mealAPI';
 import { fetchDrinkByName, fetchDrinksByCategories } from '../services/cocktailAPI';
@@ -14,21 +13,21 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
     setFoodList,
     setDrinkList,
   } = recipes;
-  async function getRecipesByCategory(categoryName, recipeType ) {
+  async function getRecipesByCategory(categoryName) {
     let recipeList;
-    switch(recipeType) {
-      case 'food':
-         recipeList = await fetchMealsByCategories(categoryName);
-         setFoodList(recipeList);
-        break;
+    switch (recipeType) {
+    case 'food':
+      recipeList = await fetchMealsByCategories(categoryName);
+      setFoodList(recipeList);
+      break;
+
+    case 'drink':
+      recipeList = await fetchDrinksByCategories(categoryName);
+      setDrinkList(recipeList);
+      break;
       
-      case 'drink':
-        recipeList = await fetchDrinksByCategories(categoryName);
-        setDrinkList(recipeList)
-        break;
-      
-      default:
-        break;
+    default:
+      break;
     }
   }
 
@@ -44,9 +43,9 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
   }
 
   function handleCategoriesButtonClick({ target: { name, classList } }) {
-    if(classList.contains('selected')) {
+    if (classList.contains('selected')) {
       handleButtonAllClick();
-    } else getRecipesByCategory(name, recipeType);
+    } else getRecipesByCategory(name);
 
     classList.toggle('selected');
   }

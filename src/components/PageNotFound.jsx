@@ -5,6 +5,7 @@ import pageNotFoundImage from '../images/pageNotFound.svg';
 function PageNotFound() {
   return (
     <div>
+      <p>Not Found</p>
       <Image src={ pageNotFoundImage } />
     </div>
   );

@@ -21,7 +21,7 @@ function FoodDetails() {
     fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
     fetchRecommendedDrinks().then((meals) => setRecommendedDrinks(meals));
     window.scrollTo(0, 0);
-  }, [recipeId]);
+  }, [recipeId, setRecommendedDrinks]);
 
   const recipe = recipeResponse ? recipeResponse[0] : null;
   const ingredientList = mapIngredientList(recipe);
@@ -45,8 +45,14 @@ function FoodDetails() {
             title={ `${strMeal} Video` }
             data-testid="video"
           />
-          <Recommended type='drinks' recipes={ recommendedDrinks } />
-          <Link to={`${pathname}/in-progress`} data-testid="start-recipe-btn" className="fixed-bottom btn-block pb-3">Iniciar Receita</Link>
+          <Recommended type="drinks" recipes={ recommendedDrinks } />
+          <Link
+            to={ `${pathname}/in-progress` }
+            data-testid="start-recipe-btn"
+            className="fixed-bottom btn-block pb-3"
+          >
+            Iniciar Receita
+          </Link>
         </>
       )}
     </div>

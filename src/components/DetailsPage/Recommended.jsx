@@ -1,6 +1,5 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
-import RecipeCard from '../RecipeCard';
 import RecommendationCard from './RecommendationCard';
 
 const MAX_LENGHT = 6;
@@ -9,11 +8,11 @@ function Recommended({ recipes, type }) {
   return (
     <div>
       <h3>Recomendadas</h3>
-      <div className="d-flex" style={{ width: '400px', overflowX:"scroll"}}>
+      <div className="d-flex" style={ { width: '400px', overflowX: 'scroll' } }>
         {recipes.length
           && recipes.slice(0, MAX_LENGHT).map((recipe, index) => {
             console.log(type);
-            if (type==='meals') {
+            if (type === 'meals') {
               const { strMeal, strMealThumb, strCategory, idMeal } = recipe;
               console.log(recipes);
               return (<RecommendationCard
@@ -42,5 +41,13 @@ function Recommended({ recipes, type }) {
     </div>
   );
 }
+
+Recommended.propTypes = {
+  recipes: PropTypes.shape({
+    length: PropTypes.func,
+    slice: PropTypes.func,
+  }).isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default Recommended;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, ButtonToolbar, Image } from 'react-bootstrap';
 
-function Hero({ thumb, title, category, alcoholic='' }) {
+function Hero({ thumb, title, category, alcoholic = '' }) {
   return (
     <div>
       <div>
@@ -23,9 +23,10 @@ function Hero({ thumb, title, category, alcoholic='' }) {
 }
 
 Hero.propTypes = {
+  alcoholic: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
 };
 
 export default Hero;

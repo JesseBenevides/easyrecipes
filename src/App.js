@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router';
 import Login from './pages/Login';
 import Drinks from './pages/Drinks';
 import Foods from './pages/Foods';
-import RecipeDetails from './pages/RecipeDetails';
 import RecipeInProgress from './pages/RecipeInProgress';
 import Explorer from './pages/Explorer';
 import ExploreFoods from './pages/ExploreFoods';
@@ -16,12 +15,9 @@ import ExploreFoodsByOrigin from './pages/ExploreFoodsByOrigin';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
-<<<<<<< HEAD
 import FoodDetails from './pages/FoodDetails';
 import DrinkDetails from './pages/DrinkDetails';
-=======
 import PageNotFound from './components/PageNotFound';
->>>>>>> cb272d9b1ee92d84b9c33ced6dfa42f8971708f9
 
 function App() {
   return (

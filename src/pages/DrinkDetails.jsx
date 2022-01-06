@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Hero from '../components/DetailsPage/Hero';
@@ -22,7 +21,7 @@ function DrikDetails() {
     fetchDrinkById(drinkId).then((recipe) => setRecipeResponse(recipe));
     fetchRecommendedMeals().then((meals) => setRecommendedFoods(meals));
     window.scrollTo(0, 0);
-  }, [drinkId]);
+  }, [drinkId, setRecommendedFoods]);
 
   const recipe = recipeResponse ? recipeResponse[0] : null;
   const ingredientList = mapIngredientList(recipe);
@@ -37,7 +36,12 @@ function DrikDetails() {
     <div className="container">
       {recipeResponse[0] && (
         <>
-          <Hero thumb={ strDrinkThumb } alcoholic={strAlcoholic} category={ strCategory } title={ strDrink } />
+          <Hero
+            thumb={ strDrinkThumb }
+            alcoholic={ strAlcoholic }
+            category={ strCategory }
+            title={ strDrink }
+          />
           <Ingredients ingredientList={ ingredientList } />
           <Instructions instructions={ strInstructions } />
           <iframe
@@ -47,8 +51,14 @@ function DrikDetails() {
             title={ `${strDrink} Video` }
             data-testid="video"
           />
-          <Recommended type='meals' recipes={ recommendedFoods } />
-          <Link to={`${pathname}/in-progress`} data-testid="start-recipe-btn" className="fixed-bottom btn-block pb-3">Iniciar Receita</Link>
+          <Recommended type="meals" recipes={ recommendedFoods } />
+          <Link
+            to={ `${pathname}/in-progress` }
+            data-testid="start-recipe-btn"
+            className="fixed-bottom btn-block pb-3"
+          >
+            Iniciar Receita
+          </Link>
         </>
       )}
     </div>

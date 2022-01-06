@@ -12,6 +12,7 @@ function Drinks() {
   const { recipes } = useContext(RecipesContext);
 
   const {
+    recipeIngredients,
     drinkList,
     drinkCategories,
     setDrinkList,
@@ -25,22 +26,24 @@ function Drinks() {
   useAPI(fetchDrinksCategories, setDrinkCategories, '', INICIAL_DRINKCATEGORIES_LENGTH);
 
   const renderDrinkCard = () => {
-    if (drinkList) {
-      const list = drinkList.slice(0, INICIAL_DRINKLIST_LENGTH);
-
-      return (
-        list.map((recipe, index) => (
-          <RecipeCard
-            key={ recipe.idDrink }
-            id={ recipe.idDrink }
-            name={ recipe.strDrink }
-            image={ recipe.strDrinkThumb }
-            index={ index }
-            type="bebidas"
-          />
-        ))
-      );
+    let list = [];
+    if (recipeIngredients.length > 0) {
+      list = recipeIngredients.slice(0, INICIAL_DRINKLIST_LENGTH);
+    } else if (drinkList) {
+      list = drinkList.slice(0, INICIAL_DRINKLIST_LENGTH);
     }
+    return (
+      list.map((recipe, index) => (
+        <RecipeCard
+          key={ recipe.idDrink }
+          id={ recipe.idDrink }
+          name={ recipe.strDrink }
+          image={ recipe.strDrinkThumb }
+          index={ index }
+          type="bebidas"
+        />
+      ))
+    );
   };
 
   const renderDrinkCategories = () => (

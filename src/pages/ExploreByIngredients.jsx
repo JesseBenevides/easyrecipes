@@ -10,7 +10,6 @@ function ExploreByIngredients() {
   const { recipes } = useContext(RecipesContext);
 
   const {
-    recipeIngredients,
     setRecipeIngredients,
   } = recipes;
   const [ingredientsMeals, setIngredientesMeals] = useState();
@@ -30,8 +29,8 @@ function ExploreByIngredients() {
 
   async function setRecipeDrink(ingredient) {
     const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
-    const recipe = await genericApi(URL);
-    setRecipeIngredients({ ...recipeIngredients, drinks: recipe.drinks });
+    const { drinks } = await genericApi(URL);
+    setRecipeIngredients(drinks);
     history.push('/bebidas');
   }
 

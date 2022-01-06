@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, ButtonToolbar, Image } from 'react-bootstrap';
 
-function Hero({ thumb, title, category }) {
+function Hero({ thumb, title, category, alcoholic='' }) {
   return (
     <div>
       <div>
@@ -11,7 +11,7 @@ function Hero({ thumb, title, category }) {
       <div>
         <div>
           <h2 data-testid="recipe-title">{title}</h2>
-          <h3 data-testid="recipe-category">{category}</h3>
+          <h3 data-testid="recipe-category">{`${alcoholic} ${category}`}</h3>
         </div>
         <ButtonToolbar>
           <Button data-testid="share-btn" />

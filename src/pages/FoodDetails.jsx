@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Hero from '../components/DetailsPage/Hero';
@@ -15,12 +14,12 @@ function FoodDetails() {
   const { recipeId } = useParams();
   const { pathname } = useLocation();
   const { recipes:
-     { recommendedFoods, setRecommendedFoods },
+     { recommendedDrinks, setRecommendedDrinks },
   } = useContext(RecipesContext);
 
   useEffect(() => {
     fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
-    fetchRecommendedDrinks().then((meals) => setRecommendedFoods(meals));
+    fetchRecommendedDrinks().then((meals) => setRecommendedDrinks(meals));
     window.scrollTo(0, 0);
   }, [recipeId]);
 
@@ -46,7 +45,7 @@ function FoodDetails() {
             title={ `${strMeal} Video` }
             data-testid="video"
           />
-          <Recommended recipes={ recommendedFoods } />
+          <Recommended type='drinks' recipes={ recommendedDrinks } />
           <Link to={`${pathname}/in-progress`} data-testid="start-recipe-btn" className="fixed-bottom btn-block pb-3">Iniciar Receita</Link>
         </>
       )}

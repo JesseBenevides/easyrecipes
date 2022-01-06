@@ -5,15 +5,17 @@ import RecommendationCard from './RecommendationCard';
 
 const MAX_LENGHT = 6;
 
-function Recommended({ recipes }) {
+function Recommended({ recipes, type }) {
   return (
     <div>
       <h3>Recomendadas</h3>
       <div className="d-flex" style={{ width: '400px', overflowX:"scroll"}}>
         {recipes.length
           && recipes.slice(0, MAX_LENGHT).map((recipe, index) => {
-            if (recipe.meals) {
+            console.log(type);
+            if (type==='meals') {
               const { strMeal, strMealThumb, strCategory, idMeal } = recipe;
+              console.log(recipes);
               return (<RecommendationCard
                 name={ strMeal }
                 image={ strMealThumb }
@@ -32,7 +34,7 @@ function Recommended({ recipes }) {
               category={ strCategory }
               id={ idDrink }
               key={ idDrink }
-              type="comidas"
+              type="bebidas"
               index={ index }
             />);
           })}

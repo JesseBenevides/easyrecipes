@@ -1,6 +1,6 @@
 const ENDPOINT_DRINKS_BY_NAME = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const ENDPOINT_LIST_CATEGORIES = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
-const ENDPOINT_DRINKS_BY_CATEGORY = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+const ENDPOINT_DRINKS_BY_CATEGORY = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
 const ENDPOINT_DRINK_BY_INGREDIENT = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 const ENDPOINT_DRINK_BY_FIRST_LETTER = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
 const ENDPOINT_DRINK_RANDOM = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';

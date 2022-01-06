@@ -36,6 +36,7 @@ function Drinks() {
             name={ recipe.strDrink }
             image={ recipe.strDrinkThumb }
             index={ index }
+            type="bebidas"
           />
         ))
       );
@@ -43,14 +44,13 @@ function Drinks() {
   };
 
   const renderDrinkCategories = () => (
-    <CategoriesFilterButtons categoryList={ drinkCategories } />
+    <CategoriesFilterButtons categoryList={ drinkCategories } recipeType="drink" />
   );
 
   return (
     <>
       <Header pageTitle="Bebidas" hasSearch recipeType="drink" />
       <section>
-        <h2>Lista de Coquetéis</h2>
         <Container>
           <Row>
             {renderDrinkCategories()}

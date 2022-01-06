@@ -10,7 +10,7 @@ function Header({ pageTitle, hasSearch, recipeType }) {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <Navbar>
+    <Navbar className="Header">
       <Button variant="link">
         <Link to="/perfil">
           <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />

@@ -46,14 +46,13 @@ function Foods() {
   };
 
   const renderFoodCategories = () => (
-    <CategoriesFilterButtons categoryList={ foodCategories } />
+    <CategoriesFilterButtons categoryList={ foodCategories } recipeType="food" />
   );
 
   return (
     <>
       <Header pageTitle="Comidas" hasSearch recipeType="food" />
       <section>
-        <h2>Lista de Comidas</h2>
         <Container>
           <Row>
             {renderFoodCategories()}

@@ -16,7 +16,7 @@ function ExploreDrinks(props) {
   }
   return (
     <div>
-      <Header pageTitle="Explorar" />
+      <Header pageTitle="Explorar Bebidas" />
       <button
         type="button"
         data-testid="explore-by-ingredient"

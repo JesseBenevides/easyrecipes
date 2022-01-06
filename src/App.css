@@ -1,4 +1,4 @@
-.meals {
+.Login {
   align-items: center;
   background: #0fa36b;
   color: #464646;
@@ -12,28 +12,14 @@
 
 .rocksGlass {
   animation: shake 1s infinite ease;
-  max-height: 80vh;
+  max-height: 20vh;
 }
 
-/*
-#iceLeft {
-  animation: clink .8s infinite ease;
-  opacity: 0.6;
-  transform-origin: 36px 66px;
-}
-
-#iceRight {
-  animation: clink .8s .2s infinite ease;
-  opacity: 0.6;
-  transform-origin: 60px 78px;
-}
-*/
-
-.meals > .logo {
+.LoginLogo > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
   font-family: Montserrat , sans-serif;
-  font-size: 3em;
+  font-size: 2.8em;
   font-weight: 900;
 }
 
@@ -67,7 +53,28 @@
   }
 }
 
+.LoginLogo, .LoginForm {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.Header {
+  background-color: #c4c4c4;
+  opacity: 85%;
+  width: 100%;
+}
+
 .Footer {
+  background-color: #c4c4c4;
   bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  opacity: 85%;
+  padding: 0.3rem;
   position: fixed;
+  width: 100%;
 }

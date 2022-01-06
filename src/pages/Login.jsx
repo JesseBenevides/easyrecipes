@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginLogo from '../components/LoginLogo';
 import RecipesContext from '../context/RecipesContext';
-import '../App.css';
 
 function Login() {
   const [email, setEmail] = useState('');

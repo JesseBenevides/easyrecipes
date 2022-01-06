@@ -12,6 +12,7 @@ function Foods() {
   const { recipes } = useContext(RecipesContext);
 
   const {
+    recipeIngredients,
     foodList,
     foodCategories,
     setFoodList,
@@ -25,20 +26,23 @@ function Foods() {
   useAPI(fetchMealsCategories, setFoodCategories, '', INICIAL_FOODCATEGORIES_LENGTH);
 
   const renderFoodCard = () => {
-    if (foodList) {
-      const list = foodList.slice(0, INICIAL_FOODLIST_LENGTH);
-      return (
-        list.map((recipe, index) => (
-          <RecipeCard
-            key={ recipe.idMeal }
-            id={ recipe.idMeal }
-            name={ recipe.strMeal }
-            image={ recipe.strMealThumb }
-            index={ index }
-          />
-        ))
-      );
+    let list = [];
+    if (recipeIngredients.length > 0) {
+      list = recipeIngredients.slice(0, INICIAL_FOODLIST_LENGTH);
+    } else if (foodList) {
+      list = foodList.slice(0, INICIAL_FOODLIST_LENGTH);
     }
+    return (
+      list.map((recipe, index) => (
+        <RecipeCard
+          key={ recipe.idMeal }
+          id={ recipe.idMeal }
+          name={ recipe.strMeal }
+          image={ recipe.strMealThumb }
+          index={ index }
+        />
+      ))
+    );
   };
 
   const renderFoodCategories = () => (

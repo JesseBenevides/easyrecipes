@@ -10,8 +10,7 @@ import RecipeInProgress from './pages/RecipeInProgress';
 import Explorer from './pages/Explorer';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
-import ExploreFoodsByIngredients from './pages/ExploreFoodsByIngredients';
-import ExploreDrinksByIngredients from './pages/ExploreDrinksByIngredients';
+import ExploreByIngredients from './pages/ExploreByIngredients';
 import ExploreFoodsByOrigin from './pages/ExploreFoodsByOrigin';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
@@ -32,11 +31,11 @@ function App() {
       <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
       <Route
         path="/explorar/comidas/ingredientes"
-        component={ ExploreFoodsByIngredients }
+        component={ ExploreByIngredients }
       />
       <Route
         path="/explorar/bebidas/ingredientes"
-        component={ ExploreDrinksByIngredients }
+        component={ ExploreByIngredients }
       />
       <Route path="/explorar/comidas/area" component={ ExploreFoodsByOrigin } />
       <Route path="/perfil" component={ Profile } />

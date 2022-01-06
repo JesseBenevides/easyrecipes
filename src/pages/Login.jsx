@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import LoginLogo from '../components/LoginLogo';
 import RecipesContext from '../context/RecipesContext';
+import '../App.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -37,39 +39,41 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <label htmlFor="email-bar">
-        <input
-          data-testid="email-input"
-          type="email"
-          id="email-bar"
-          placeholder="E-mail"
-          name="email"
-          value={ email }
-          onChange={ handleChangeEmail }
-        />
-      </label>
-      <label htmlFor="password-bar">
-        <input
-          data-testid="password-input"
-          type="password"
-          id="epassword-bar"
-          placeholder="Senha"
-          name="password"
-          value={ password }
-          onChange={ handleChangePassword }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ disable }
-        onClick={ handleClick }
-      >
-        Entrar
-      </button>
-    </div>
+    <section className="Login">
+      <LoginLogo />
+      <div className="LoginForm">
+        <label htmlFor="email-bar">
+          <input
+            data-testid="email-input"
+            type="email"
+            id="email-bar"
+            placeholder="E-mail"
+            name="email"
+            value={ email }
+            onChange={ handleChangeEmail }
+          />
+        </label>
+        <label htmlFor="password-bar">
+          <input
+            data-testid="password-input"
+            type="password"
+            id="epassword-bar"
+            placeholder="Senha"
+            name="password"
+            value={ password }
+            onChange={ handleChangePassword }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ disable }
+          onClick={ handleClick }
+        >
+          Entrar
+        </button>
+      </div>
+    </section>
   );
 }
 

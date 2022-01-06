@@ -16,8 +16,12 @@ import ExploreFoodsByOrigin from './pages/ExploreFoodsByOrigin';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+<<<<<<< HEAD
 import FoodDetails from './pages/FoodDetails';
 import DrinkDetails from './pages/DrinkDetails';
+=======
+import PageNotFound from './components/PageNotFound';
+>>>>>>> cb272d9b1ee92d84b9c33ced6dfa42f8971708f9
 
 function App() {
   return (
@@ -44,6 +48,7 @@ function App() {
       <Route path="/perfil" component={ Profile } />
       <Route path="/receitas-feitas" component={ DoneRecipes } />
       <Route path="/receitas-favoritas" component={ FavoriteRecipes } />
+      <Route path="*" component={ PageNotFound } />
 
     </Switch>
   );

@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function RecipeCard(props) {
-  const { name, image, index, id, category, type } = props;
+  const { name, image, index, id, type } = props;
   return (
     <Link
       to={ `/${type}/${id}` }
@@ -34,7 +34,6 @@ RecipeCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
 };

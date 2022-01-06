@@ -5,6 +5,7 @@ const ENDPOINT_MEALS_BY_INGREDIENT = 'https://www.themealdb.com/api/json/v1/1/fi
 const ENDPOINT_MEALS_BY_FIRST_LETTER = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 const ENDPOINT_MEAL_BY_ID = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 const ENDPOINT_RECOMMENDED_DRINKS = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const ENDPOINT_MEAL_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.php';
 
 export async function fetchMealByName(mealName) {
   const ENDPOINT = `${ENDPOINT_MEAL_BY_NAME}${mealName}`;
@@ -55,4 +56,10 @@ export async function fetchRecommendedDrinks() {
   const response = await fetch(ENDPOINT_RECOMMENDED_DRINKS);
   const { drinks } = await response.json();
   return drinks;
+}
+
+export async function fetchMealRandom() {
+  const response = await fetch(ENDPOINT_MEAL_RANDOM);
+  const { meals } = await response.json();
+  return meals;
 }

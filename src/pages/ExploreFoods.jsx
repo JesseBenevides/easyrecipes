@@ -17,7 +17,7 @@ function ExploreMeals(props) {
   }
   return (
     <div>
-      <Header pageTitle="Explorar" />
+      <Header pageTitle="Explorar Comidas" />
       <button
         type="button"
         data-testid="explore-by-ingredient"

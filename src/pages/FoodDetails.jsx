@@ -7,6 +7,7 @@ import Instructions from '../components/DetailsPage/Instructions';
 import Recommended from '../components/DetailsPage/Recommended';
 import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
+import { isRecipeInProgress, toggleRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchMealByID, fetchRecommendedDrinks } from '../services/mealAPI';
 
 function FoodDetails() {
@@ -16,6 +17,7 @@ function FoodDetails() {
   const { recipes:
      { recommendedDrinks, setRecommendedDrinks },
   } = useContext(RecipesContext);
+  const isInProgress = isRecipeInProgress(recipeId, 'meals')
 
   useEffect(() => {
     fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
@@ -50,8 +52,9 @@ function FoodDetails() {
             to={ `${pathname}/in-progress` }
             data-testid="start-recipe-btn"
             className="fixed-bottom btn-block pb-3"
+            onClick={ () => toggleRecipeInProgress(recipeResponse, 'meals') }
           >
-            Iniciar Receita
+            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
           </Link>
         </>
       )}

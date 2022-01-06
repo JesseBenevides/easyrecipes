@@ -7,6 +7,7 @@ import Instructions from '../components/DetailsPage/Instructions';
 import Recommended from '../components/DetailsPage/Recommended';
 import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
+import { isRecipeInProgress, toggleRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchDrinkById, fetchRecommendedMeals } from '../services/cocktailAPI';
 
 function DrikDetails() {
@@ -16,7 +17,7 @@ function DrikDetails() {
   const { recipes:
      { recommendedFoods, setRecommendedFoods },
   } = useContext(RecipesContext);
-
+  const isInProgress = isRecipeInProgress(drinkId, 'cocktails');
   useEffect(() => {
     fetchDrinkById(drinkId).then((recipe) => setRecipeResponse(recipe));
     fetchRecommendedMeals().then((meals) => setRecommendedFoods(meals));
@@ -31,7 +32,7 @@ function DrikDetails() {
     strYoutube,
     strAlcoholic,
   } = recipe || {};
-  console.log(recommendedFoods);
+
   return (
     <div className="container">
       {recipeResponse[0] && (
@@ -56,8 +57,9 @@ function DrikDetails() {
             to={ `${pathname}/in-progress` }
             data-testid="start-recipe-btn"
             className="fixed-bottom btn-block pb-3"
+            onClick={ () => toggleRecipeInProgress(recipeResponse, 'cocktails') }
           >
-            Iniciar Receita
+            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
           </Link>
         </>
       )}

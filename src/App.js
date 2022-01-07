@@ -24,10 +24,15 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Foods } />
       <Route exact path="/bebidas" component={ Drinks } />
-      <Route path="/comidas/:recipeId" component={ FoodDetails } />
-      <Route path="/bebidas/:drinkId" component={ DrinkDetails } />
-      <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
-      <Route path="/bebidas/:drinkId/in-progress" component={ RecipeInProgress } />
+      <Route exact path="/comidas/:recipeId" component={ FoodDetails } />
+      <Route exact path="/bebidas/:drinkId" component={ DrinkDetails } />
+      <Route exact path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
+      <Route
+        path="/bebidas/:drinkId/in-progress"
+        render={ () => (
+          <DrinkDetails makingRecipe />
+        ) }
+      />
       <Route exact path="/explorar" component={ Explorer } />
       <Route exact path="/explorar/comidas" component={ ExploreFoods } />
       <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />

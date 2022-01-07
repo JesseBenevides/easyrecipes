@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router';
 import Login from './pages/Login';
 import Drinks from './pages/Drinks';
 import Foods from './pages/Foods';
-import RecipeDetails from './pages/RecipeDetails';
 import RecipeInProgress from './pages/RecipeInProgress';
 import Explorer from './pages/Explorer';
 import ExploreFoods from './pages/ExploreFoods';
@@ -15,6 +14,8 @@ import ExploreFoodsByOrigin from './pages/ExploreFoodsByOrigin';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import FoodDetails from './pages/FoodDetails';
+import DrinkDetails from './pages/DrinkDetails';
 import PageNotFound from './components/PageNotFound';
 
 function App() {
@@ -23,8 +24,8 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Foods } />
       <Route exact path="/bebidas" component={ Drinks } />
-      <Route path="/comidas/:recipeId" component={ RecipeDetails } />
-      <Route path="/bebidas/:drinkId" component={ RecipeDetails } />
+      <Route path="/comidas/:recipeId" component={ FoodDetails } />
+      <Route path="/bebidas/:drinkId" component={ DrinkDetails } />
       <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
       <Route path="/bebidas/:drinkId/in-progress" component={ RecipeInProgress } />
       <Route exact path="/explorar" component={ Explorer } />

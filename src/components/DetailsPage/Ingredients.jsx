@@ -21,13 +21,15 @@ function renderIngredientSteps(ingredientList) {
   return (
     <Form>
       {ingredientList.map(({ ingredient, index }) => (
-        <Form.Check
-          data-testid={ `${index}-ingredient-step` }
-          key={ ingredient }
-          type="checkbox"
-          id={ ingredient }
-          label={ ingredient }
-        />
+        <div key={ ingredient } data-testid={ `${index}-ingredient-step` }>
+          <Form.Check
+            type="checkbox"
+            name={ ingredient }
+            id={ ingredient }
+            label={ ingredient }
+            value={ ingredient }
+          />
+        </div>
       ))}
     </Form>
   );
@@ -37,7 +39,9 @@ function Ingredients({ ingredientList, makingRecipe }) {
   return (
     <div>
       <h3>Ingredientes</h3>
-      { makingRecipe ? renderIngredientSteps(ingredientList) : renderIngredientList(ingredientList) }
+      {makingRecipe
+        ? renderIngredientSteps(ingredientList)
+        : renderIngredientList(ingredientList)}
     </div>
   );
 }

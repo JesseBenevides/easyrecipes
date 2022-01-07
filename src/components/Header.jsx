@@ -35,13 +35,14 @@ function Header({ pageTitle, hasSearch, recipeType }) {
 }
 
 Header.propTypes = {
-  hasSearch: PropTypes.bool.isRequired,
+  hasSearch: PropTypes.bool,
   pageTitle: PropTypes.string.isRequired,
   recipeType: PropTypes.string,
 };
 
 Header.defaultProps = {
   recipeType: '',
+  hasSearch: false,
 };
 
 export default Header;

@@ -4,7 +4,8 @@ import IngredientCard from '../components/IngredientCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
-import genericApi from '../services/genericApi';
+import { fetchMealsByIngredient, fetchMealsIngredients } from '../services/mealAPI';
+import { fetchDrinksByIngredient, fetchDrinksIngredients } from '../services/cocktailAPI';
 
 function ExploreByIngredients() {
   const { recipes } = useContext(RecipesContext);
@@ -16,20 +17,16 @@ function ExploreByIngredients() {
   const [ingredientsDrinks, setIngredientsDrinks] = useState();
   const history = useHistory();
   const { location: { pathname } } = useHistory();
-  const INGREDIENTS_MEALS = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-  const URL_INGREDIENTS_DRINKS = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
   const validation = ingredientsDrinks || ingredientsMeals;
 
   async function setRecipeMeal(ingredient) {
-    const URL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
-    const { meals } = await genericApi(URL);
+    const meals = await fetchMealsByIngredient(ingredient);
     setRecipeIngredients(meals);
     history.push('/comidas');
   }
 
   async function setRecipeDrink(ingredient) {
-    const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
-    const { drinks } = await genericApi(URL);
+    const drinks = await fetchDrinksByIngredient(ingredient);
     setRecipeIngredients(drinks);
     history.push('/bebidas');
   }
@@ -37,12 +34,12 @@ function ExploreByIngredients() {
   useEffect(() => {
     async function getAllIngredients() {
       if (pathname.includes('/explorar/comidas')) {
-        const response = await genericApi(INGREDIENTS_MEALS);
-        setIngredientesMeals(response.meals);
+        const meals = await fetchMealsIngredients();
+        setIngredientesMeals(meals);
       }
       if (pathname.includes('/explorar/bebidas')) {
-        const response = await genericApi(URL_INGREDIENTS_DRINKS);
-        setIngredientsDrinks(response.drinks);
+        const drinks = await fetchDrinksIngredients();
+        setIngredientsDrinks(drinks);
       }
     }
     getAllIngredients();

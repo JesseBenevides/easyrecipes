@@ -41,10 +41,10 @@ function Recommended({ recipes, type }) {
 }
 
 Recommended.propTypes = {
-  recipes: PropTypes.shape({
+  recipes: PropTypes.arrayOf(PropTypes.shape({
     length: PropTypes.func,
     slice: PropTypes.func,
-  }).isRequired,
+  })).isRequired,
   type: PropTypes.string.isRequired,
 };
 

@@ -35,7 +35,7 @@ function DrikDetails() {
 
   return (
     <div className="container">
-      {recipeResponse[0] && (
+      {recipe && (
         <>
           <Hero
             thumb={ strDrinkThumb }

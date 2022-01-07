@@ -21,7 +21,7 @@ function Ingredients({ ingredientList }) {
 }
 
 Ingredients.propTypes = {
-  ingredientList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Ingredients;

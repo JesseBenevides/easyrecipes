@@ -15,9 +15,15 @@ function ExploreFoodsByOrigin() {
   useAPI(fetchMealsByArea, setFoodList, 'canadian');
 
   const renderDropdownAreas = () => (
-    <select>
+    <select data-testid="explore-by-area-dropdown">
       {mealAreas.map(({ strArea }) => (
-        <option key={ strArea } value={ strArea }>{ strArea }</option>
+        <option
+          key={ strArea }
+          value={ strArea }
+          data-testid={ `${strArea}-option` }
+        >
+          { strArea }
+        </option>
       ))}
     </select>
   );

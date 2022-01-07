@@ -3,6 +3,7 @@ const ENDPOINT_LIST_CATEGORIES = 'https://www.themealdb.com/api/json/v1/1/list.p
 const ENDPOINT_MEALS_BY_CATEGORY = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 const ENDPOINT_MEALS_BY_FIRST_LETTER = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 const ENDPOINT_MEAL_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.php';
+const ENDPOINT_MEALS_BY_INGREDIENT = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
 
 export async function fetchMealByName(mealName) {
   const ENDPOINT = `${ENDPOINT_MEAL_BY_NAME}${mealName}`;
@@ -18,8 +19,8 @@ export async function fetchMealsCategories() {
   return meals;
 }
 
-export async function fetchMealsByIngredient(endpoint) {
-  const response = await fetch(endpoint);
+export async function fetchMealsByIngredient(ingredient) {
+  const response = await fetch(`${ENDPOINT_MEALS_BY_INGREDIENT}${ingredient}`);
   const { meals } = await response.json();
   return meals;
 }

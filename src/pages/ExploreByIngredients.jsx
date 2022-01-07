@@ -100,7 +100,7 @@ function ExploreByIngredients() {
 
   return (
     <section>
-      <Header componentName="Explorar Ingredientes" />
+      <Header pageTitle="Explorar Ingredientes" />
       { validation && showIngredients() }
       <Footer />
     </section>

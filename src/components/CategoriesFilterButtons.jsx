@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
@@ -10,6 +9,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
   const { recipes } = useContext(RecipesContext);
 
   const {
+    setRecipeIngredients,
     setFoodList,
     setDrinkList,
   } = recipes;
@@ -39,6 +39,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
   function handleButtonAllClick() {
     if (recipeType === 'food') getAllRecipes(fetchMealByName, setFoodList);
     else getAllRecipes(fetchDrinkByName, setDrinkList);
+    setRecipeIngredients([]);
   }
 
   function handleCategoriesButtonClick({ target: { name, classList } }) {
@@ -47,6 +48,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
     } else getRecipesByCategory(name);
 
     classList.toggle('selected');
+    setRecipeIngredients([]);
   }
 
   return (

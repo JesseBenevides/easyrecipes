@@ -1,6 +1,12 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import RecipesContext from '../context/RecipesContext';
 
 function useAPI(fetchFunction, setState, searchName, resultLength) {
+  const { recipes } = useContext(RecipesContext);
+
+  const {
+    setRecipeIngredients,
+  } = recipes;
   useEffect(() => {
     async function getList() {
       const results = await fetchFunction(searchName);
@@ -15,7 +21,10 @@ function useAPI(fetchFunction, setState, searchName, resultLength) {
     }
 
     getList();
-  }, [fetchFunction, setState, searchName, resultLength]);
+    return () => {
+      setRecipeIngredients([]);
+    };
+  }, [fetchFunction, setState, searchName, resultLength, setRecipeIngredients]);
 }
 
 export default useAPI;

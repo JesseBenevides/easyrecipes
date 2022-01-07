@@ -16,6 +16,7 @@ function ExploreFoodsByOrigin() {
 
   const renderDropdownAreas = () => (
     <select data-testid="explore-by-area-dropdown">
+      <option data-testid="All-option">All</option>
       {mealAreas.map(({ strArea }) => (
         <option
           key={ strArea }

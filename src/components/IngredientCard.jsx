@@ -7,7 +7,11 @@ function IngredientCard(props) {
 
   return (
     <section>
-      <Card data-testid={ `${index}-ingredient-card` } className="recomendation">
+      <Card
+        style={ { width: '10rem' } }
+        className="recomendation"
+        data-testid={ `${index}-ingredient-card` }
+      >
         <Card.Img
           data-testid={ `${index}-card-img` }
           src={ img }

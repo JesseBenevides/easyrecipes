@@ -56,6 +56,7 @@ function ExploreByIngredients() {
               <button
                 key={ index }
                 type="button"
+                style={ { border: 'none' } }
                 onClick={ () => setRecipeMeal(strIngredient) }
               >
                 <IngredientCard

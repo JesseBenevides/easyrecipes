@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   ButtonToolbar,
   Image,
-  OverlayTrigger,
-  Tooltip,
 } from 'react-bootstrap';
 import copy from 'clipboard-copy';
 import shareBtnImg from '../../images/shareIcon.svg';

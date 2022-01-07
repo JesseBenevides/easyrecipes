@@ -17,7 +17,7 @@ function FoodDetails() {
   const { recipes:
      { recommendedDrinks, setRecommendedDrinks },
   } = useContext(RecipesContext);
-  const isInProgress = isRecipeInProgress(recipeId, 'meals')
+  const isInProgress = isRecipeInProgress(recipeId, 'meals');
 
   useEffect(() => {
     fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));

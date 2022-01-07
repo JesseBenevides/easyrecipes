@@ -1,21 +1,21 @@
 const PROGRESS_STORAGE = 'inProgressRecipes';
 
-function mapSimpleIngredientList(recipe) {
-  if (recipe) {
-    const MIN_LENGHT = 1;
-    const MAX_LENGHT = 20;
-    const updatedIngredientList = [];
+// function mapSimpleIngredientList(recipe) {
+//   if (recipe) {
+//     const MIN_LENGHT = 1;
+//     const MAX_LENGHT = 20;
+//     const updatedIngredientList = [];
 
-    for (let i = MIN_LENGHT; i <= MAX_LENGHT; i += 1) {
-      const ingredient = recipe[`strIngredient${i}`];
+//     for (let i = MIN_LENGHT; i <= MAX_LENGHT; i += 1) {
+//       const ingredient = recipe[`strIngredient${i}`];
 
-      if (ingredient) {
-        updatedIngredientList.push(ingredient);
-      }
-    }
-    return updatedIngredientList;
-  }
-}
+//       if (ingredient) {
+//         updatedIngredientList.push(ingredient);
+//       }
+//     }
+//     return updatedIngredientList;
+//   }
+// }
 
 export function createInProgressList() {
   const list = localStorage.getItem(PROGRESS_STORAGE);

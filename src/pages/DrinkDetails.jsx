@@ -17,6 +17,7 @@ function DrikDetails() {
   const { recipes:
      { recommendedFoods, setRecommendedFoods },
   } = useContext(RecipesContext);
+  // const isInProgress = isRecipeInProgress(drinkId, 'cocktails');
   const isInProgress = isRecipeInProgress(drinkId, 'cocktails');
   useEffect(() => {
     fetchDrinkById(drinkId).then((recipe) => setRecipeResponse(recipe));
@@ -35,7 +36,7 @@ function DrikDetails() {
 
   return (
     <div className="container">
-      {recipeResponse[0] && (
+      {recipe && (
         <>
           <Hero
             thumb={ strDrinkThumb }

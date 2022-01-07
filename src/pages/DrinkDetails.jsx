@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
 import Instructions from '../components/DetailsPage/Instructions';

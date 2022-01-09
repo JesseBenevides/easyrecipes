@@ -67,12 +67,11 @@ function Ingredients({
   createInProgressList();
 
   useEffect(() => {
-    toggleRecipeInProgress(recipeId, 'cocktails');
+    toggleRecipeInProgress(recipeId, type);
     setRecipeProgress(getRecipeProgress(recipeId, type));
   }, [makingRecipe, recipeId, type]);
 
   useEffect(() => {
-    console.log(ingredientList.length, recipeProgress.length);
     if (recipeProgress.length === ingredientList.length) {
       setIsFinishButtonDisabled(false);
     } else {
@@ -97,11 +96,18 @@ function Ingredients({
 }
 
 Ingredients.propTypes = {
-  ingredientList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  makingRecipe: PropTypes.bool.isRequired,
-  recipeId: PropTypes.number.isRequired,
+  ingredientList: PropTypes.arrayOf(PropTypes.shape({
+    ingredient: PropTypes.string,
+    index: PropTypes.number.isRequired,
+  })).isRequired,
+  makingRecipe: PropTypes.bool,
+  recipeId: PropTypes.string.isRequired,
   setIsFinishButtonDisabled: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+};
+
+Ingredients.defaultProps = {
+  makingRecipe: false,
 };
 
 export default Ingredients;

@@ -32,7 +32,6 @@ function DrinkDetails({ makingRecipe }) {
   const { strDrink,
     strCategory, strDrinkThumb,
     strInstructions,
-    strYoutube,
     strAlcoholic,
   } = recipe || {};
 
@@ -54,13 +53,6 @@ function DrinkDetails({ makingRecipe }) {
             setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
           />
           <Instructions instructions={ strInstructions } />
-          { !makingRecipe && <iframe
-            width="420"
-            height="315"
-            src={ strYoutube }
-            title={ `${strDrink} Video` }
-            data-testid="video"
-          /> }
           { !makingRecipe && <Recommended type="meals" recipes={ recommendedFoods } /> }
           { !makingRecipe ? (
             <StartRecipeButton
@@ -75,7 +67,11 @@ function DrinkDetails({ makingRecipe }) {
 }
 
 DrinkDetails.propTypes = {
-  makingRecipe: PropTypes.bool.isRequired,
+  makingRecipe: PropTypes.bool,
+};
+
+DrinkDetails.defaultProps = {
+  makingRecipe: false,
 };
 
 export default DrinkDetails;

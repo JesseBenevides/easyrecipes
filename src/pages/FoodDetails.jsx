@@ -44,7 +44,7 @@ function FoodDetails({ makingRecipe }) {
           <Ingredients
             ingredientList={ ingredientList }
             makingRecipe={ makingRecipe }
-            type="cocktails"
+            type="meals"
             recipeId={ recipeId }
             setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
           />
@@ -52,7 +52,7 @@ function FoodDetails({ makingRecipe }) {
           { !makingRecipe && <iframe
             width="420"
             height="315"
-            src={ strYoutube }
+            src={ strYoutube.replace('watch?v=', 'embed/') }
             title={ `${strMeal} Video` }
             data-testid="video"
           /> }
@@ -70,7 +70,11 @@ function FoodDetails({ makingRecipe }) {
 }
 
 FoodDetails.propTypes = {
-  makingRecipe: PropTypes.bool.isRequired,
+  makingRecipe: PropTypes.bool,
+};
+
+FoodDetails.defaultProps = {
+  makingRecipe: false,
 };
 
 export default FoodDetails;

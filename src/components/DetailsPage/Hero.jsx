@@ -10,11 +10,12 @@ import shareBtnImg from '../../images/shareIcon.svg';
 
 const SHARE_TIMEOUT_MS = 5000;
 
-function Hero({ thumb, title, category, alcoholic = '' }) {
+function Hero({ thumb, title, category, alcoholic }) {
   const [showCopyMsg, setShowCopyMsg] = useState(false);
 
   function handleShare() {
     setShowCopyMsg(true);
+    copy(window.location.href.replace('/in-progress', ''));
     setTimeout(() => {
       setShowCopyMsg(false);
     }, SHARE_TIMEOUT_MS);
@@ -35,7 +36,6 @@ function Hero({ thumb, title, category, alcoholic = '' }) {
             data-testid="share-btn"
             onClick={ () => {
               handleShare();
-              copy(window.location.href);
             } }
           >
             {
@@ -52,10 +52,14 @@ function Hero({ thumb, title, category, alcoholic = '' }) {
 }
 
 Hero.propTypes = {
-  alcoholic: PropTypes.string.isRequired,
+  alcoholic: PropTypes.string,
   category: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+};
+
+Hero.defaultProps = {
+  alcoholic: '',
 };
 
 export default Hero;

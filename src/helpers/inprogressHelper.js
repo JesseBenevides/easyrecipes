@@ -36,7 +36,6 @@ export function isRecipeInProgress(recipeId, recipeType) {
 
   const progressListIDS = Object.keys(progressList[recipeType]);
   const isInProgress = progressListIDS.includes(recipeId);
-  console.log(isInProgress);
   return isInProgress;
 }
 

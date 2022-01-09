@@ -98,10 +98,10 @@ function Ingredients({
 
 Ingredients.propTypes = {
   ingredientList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  makingRecipe: PropTypes.any,
-  recipeId: PropTypes.any,
-  setIsFinishButtonDisabled: PropTypes.func,
-  type: PropTypes.any
-}
+  makingRecipe: PropTypes.bool.isRequired,
+  recipeId: PropTypes.number.isRequired,
+  setIsFinishButtonDisabled: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default Ingredients;

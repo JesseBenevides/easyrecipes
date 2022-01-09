@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import FinishRecipeBtn from '../components/DetailsPage/FinishRecipeBtn';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
@@ -9,7 +9,7 @@ import Recommended from '../components/DetailsPage/Recommended';
 import StartRecipeButton from '../components/DetailsPage/StartRecipeButton';
 import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
-import { isRecipeInProgress, toggleRecipeInProgress } from '../helpers/inprogressHelper';
+import { isRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchMealByID, fetchRecommendedDrinks } from '../services/mealAPI';
 
 function FoodDetails({ makingRecipe }) {
@@ -68,5 +68,9 @@ function FoodDetails({ makingRecipe }) {
     </div>
   );
 }
+
+FoodDetails.propTypes = {
+  makingRecipe: PropTypes.bool.isRequired,
+};
 
 export default FoodDetails;

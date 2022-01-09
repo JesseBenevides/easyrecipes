@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,5 +13,10 @@ function StartRecipeButton({ to, isInProgress }) {
     </Link>
   );
 }
+
+StartRecipeButton.propTypes = {
+  isInProgress: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 export default StartRecipeButton;

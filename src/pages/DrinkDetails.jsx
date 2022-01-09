@@ -73,4 +73,8 @@ function DrinkDetails({ makingRecipe }) {
   );
 }
 
+DrinkDetails.propTypes = {
+  makingRecipe: PropTypes.bool.isRequired,
+};
+
 export default DrinkDetails;

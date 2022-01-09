@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router';
 import Login from './pages/Login';
 import Drinks from './pages/Drinks';
 import Foods from './pages/Foods';
-import RecipeInProgress from './pages/RecipeInProgress';
 import Explorer from './pages/Explorer';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';

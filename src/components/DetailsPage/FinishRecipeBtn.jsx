@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -17,5 +18,10 @@ function FinishRecipeBtn({ to, isFinishButtonDisabled }) {
     </Button>
   );
 }
+
+FinishRecipeBtn.propTypes = {
+  isFinishButtonDisabled: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 export default FinishRecipeBtn;

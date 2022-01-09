@@ -11,7 +11,7 @@ import mapIngredientList from '../helpers/detailsHelper';
 import { isRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchDrinkById, fetchRecommendedMeals } from '../services/cocktailAPI';
 
-function DrikDetails({ makingRecipe }) {
+function DrinkDetails({ makingRecipe }) {
   const [recipeResponse, setRecipeResponse] = useState({});
   const [isFinishButtonDisabled, setIsFinishButtonDisabled] = useState(true);
   const { drinkId } = useParams();
@@ -73,4 +73,4 @@ function DrikDetails({ makingRecipe }) {
   );
 }
 
-export default DrikDetails;
+export default DrinkDetails;

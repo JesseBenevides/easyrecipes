@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import FinishRecipeBtn from '../components/DetailsPage/FinishRecipeBtn';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
 import Instructions from '../components/DetailsPage/Instructions';
 import Recommended from '../components/DetailsPage/Recommended';
+import StartRecipeButton from '../components/DetailsPage/StartRecipeButton';
 import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
 import { isRecipeInProgress, toggleRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchMealByID, fetchRecommendedDrinks } from '../services/mealAPI';
 
-function FoodDetails() {
+function FoodDetails({ makingRecipe }) {
   const [recipeResponse, setRecipeResponse] = useState({});
+  const [isFinishButtonDisabled, setIsFinishButtonDisabled] = useState(true);
   const { recipeId } = useParams();
   const { pathname } = useLocation();
   const { recipes:
@@ -38,24 +41,28 @@ function FoodDetails() {
       {recipe && (
         <>
           <Hero thumb={ strMealThumb } category={ strCategory } title={ strMeal } />
-          <Ingredients ingredientList={ ingredientList } />
+          <Ingredients
+            ingredientList={ ingredientList }
+            makingRecipe={ makingRecipe }
+            type="cocktails"
+            recipeId={ recipeId }
+            setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
+          />
           <Instructions instructions={ strInstructions } />
-          <iframe
+          { !makingRecipe && <iframe
             width="420"
             height="315"
             src={ strYoutube }
             title={ `${strMeal} Video` }
             data-testid="video"
-          />
-          <Recommended type="drinks" recipes={ recommendedDrinks } />
-          <Link
-            to={ `${pathname}/in-progress` }
-            data-testid="start-recipe-btn"
-            className="fixed-bottom btn-block pb-3"
-            onClick={ () => toggleRecipeInProgress(recipeResponse, 'meals') }
-          >
-            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
-          </Link>
+          /> }
+          { !makingRecipe && <Recommended type="drinks" recipes={ recommendedDrinks } /> }
+          { !makingRecipe ? (
+            <StartRecipeButton
+              to={ pathname }
+              isInProgress={ isInProgress }
+            />
+          ) : <FinishRecipeBtn isFinishButtonDisabled={ isFinishButtonDisabled } /> }
         </>
       )}
     </div>

@@ -26,11 +26,16 @@ function App() {
       <Route exact path="/bebidas" component={ Drinks } />
       <Route exact path="/comidas/:recipeId" component={ FoodDetails } />
       <Route exact path="/bebidas/:drinkId" component={ DrinkDetails } />
-      <Route exact path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
       <Route
         path="/bebidas/:drinkId/in-progress"
         render={ () => (
           <DrinkDetails makingRecipe />
+        ) }
+      />
+      <Route
+        path="/comidas/:recipeId/in-progress"
+        render={ () => (
+          <FoodDetails makingRecipe />
         ) }
       />
       <Route exact path="/explorar" component={ Explorer } />

@@ -35,7 +35,6 @@ export function getProgressStorage() {
 export function getRecipeProgress(recipeId, recipeType) {
   const progressList = getProgressStorage();
   const updatedProgressList = { ...progressList };
-  console.log(updatedProgressList);
   return updatedProgressList[recipeType][recipeId];
 }
 

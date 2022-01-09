@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import FinishRecipeBtn from '../components/DetailsPage/FinishRecipeBtn';

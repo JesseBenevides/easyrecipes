@@ -1,16 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
-function FinishRecipeBtn({ to, toggleRecipeInProgress, recipeResponse }) {
+function FinishRecipeBtn({ to, isFinishButtonDisabled }) {
+  const history = useHistory();
+
   return (
-    <Link
+    <Button
       to={ `${to}/in-progress` }
       data-testid="finish-recipe-btn"
       className="btn btn-primary fixed-bottom btn-block pb-3"
-      onClick={ () => toggleRecipeInProgress(recipeResponse, 'cocktails') }
+      onClick={ () => history.push('/receitas-feitas') }
+      disabled={ isFinishButtonDisabled }
     >
-      { 'Finalizar receita' }
-    </Link>
+      Finalizar receita
+    </Button>
   );
 }
 

@@ -13,6 +13,7 @@ import { fetchDrinkById, fetchRecommendedMeals } from '../services/cocktailAPI';
 
 function DrikDetails({ makingRecipe }) {
   const [recipeResponse, setRecipeResponse] = useState({});
+  const [isFinishButtonDisabled, setIsFinishButtonDisabled] = useState(true);
   const { drinkId } = useParams();
   const { pathname } = useLocation();
   const { recipes:
@@ -47,6 +48,9 @@ function DrikDetails({ makingRecipe }) {
           <Ingredients
             ingredientList={ ingredientList }
             makingRecipe={ makingRecipe }
+            type="cocktails"
+            recipeId={ drinkId }
+            setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
           />
           <Instructions instructions={ strInstructions } />
           { !makingRecipe && <iframe
@@ -60,10 +64,9 @@ function DrikDetails({ makingRecipe }) {
           { !makingRecipe ? (
             <StartRecipeButton
               to={ pathname }
-              recipeResponse={ recipeResponse }
               isInProgress={ isInProgress }
             />
-          ) : <FinishRecipeBtn /> }
+          ) : <FinishRecipeBtn isFinishButtonDisabled={ isFinishButtonDisabled } /> }
         </>
       )}
     </div>

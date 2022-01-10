@@ -43,8 +43,8 @@ function Recommended({ recipes, type }) {
 Recommended.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.shape({
     strCategory: PropTypes.string,
-  })).isRequired,
-  type: PropTypes.string.isRequired,
+    length: PropTypes.func,
+    slice: PropTypes.func,
 };
 
 export default Recommended;

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { Container, Row } from 'react-bootstrap';
 import IngredientCard from '../components/IngredientCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -49,25 +50,27 @@ function ExploreByIngredients() {
     const MAX_MEALS = 12;
     if (pathname.includes('/explorar/comidas')) {
       return (
-        <section>
-          { ingredientsMeals.map(({ strIngredient }, index) => (
-            index < MAX_MEALS
-            && (
-              <button
-                key={ index }
-                type="button"
-                style={ { border: 'none' } }
-                onClick={ () => setRecipeMeal(strIngredient) }
-              >
-                <IngredientCard
-                  name={ strIngredient }
-                  index={ index }
-                  img={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
-                />
-              </button>
-            )
-          )) }
-        </section>
+        <Container>
+          <Row>
+            { ingredientsMeals.map(({ strIngredient }, index) => (
+              index < MAX_MEALS
+              && (
+                <button
+                  key={ index }
+                  type="button"
+                  style={ { border: 'none' } }
+                  onClick={ () => setRecipeMeal(strIngredient) }
+                >
+                  <IngredientCard
+                    name={ strIngredient }
+                    index={ index }
+                    img={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
+                  />
+                </button>
+              )
+            )) }
+          </Row>
+        </Container>
       );
     }
     if (pathname.includes('/explorar/bebidas')) {
@@ -79,6 +82,7 @@ function ExploreByIngredients() {
               <button
                 key={ index }
                 type="button"
+                style={ { border: 'none' } }
                 onClick={ () => setRecipeDrink(strIngredient1) }
               >
                 <IngredientCard

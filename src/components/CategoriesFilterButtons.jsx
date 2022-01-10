@@ -53,7 +53,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
 
   return (
     <Container>
-      <Row>
+      <Row className="justify-content-center">
         <ButtonGroup aria-label="Basic example">
           <Button
             variant="secondary"

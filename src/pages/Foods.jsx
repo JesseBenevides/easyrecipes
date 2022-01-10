@@ -54,13 +54,9 @@ function Foods() {
     <>
       <Header pageTitle="Comidas" hasSearch recipeType="food" />
       <section>
+        {renderFoodCategories()}
         <Container>
-          <Row>
-            {renderFoodCategories()}
-          </Row>
-        </Container>
-        <Container>
-          <Row>
+          <Row className="justify-content-center">
             { renderFoodCard() }
           </Row>
         </Container>

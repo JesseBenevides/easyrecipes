@@ -11,6 +11,7 @@ function RecipeCard(props) {
       key={ id }
     >
       <Card
+        className="mb-4 mr-4"
         id={ id }
         style={ { width: '10rem' } }
         data-testid={ `${index}-recipe-card` }

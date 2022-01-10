@@ -54,13 +54,9 @@ function Drinks() {
     <>
       <Header pageTitle="Bebidas" hasSearch recipeType="drink" />
       <section>
+        {renderDrinkCategories()}
         <Container>
-          <Row>
-            {renderDrinkCategories()}
-          </Row>
-        </Container>
-        <Container>
-          <Row>
+          <Row className="justify-content-center">
             { renderDrinkCard() }
           </Row>
         </Container>

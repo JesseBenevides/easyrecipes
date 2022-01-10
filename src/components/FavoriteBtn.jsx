@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import favoriteWhiteBtnIcon from '../images/whiteHeartIcon.svg';
 import favoriteBlackBtnIcon from '../images/blackHeartIcon.svg';
-import { getFavoriteRecipes, removeRecipeOnFavorites, saveRecipeOnFavorites } from '../helpers/favoritesHelper';
+import {
+  getFavoriteRecipes,
+  removeRecipeOnFavorites,
+  saveRecipeOnFavorites } from '../helpers/favoritesHelper';
 
 function FavoriteBtn({ recipe }) {
   const [isFavorite, setIsFavorite] = useState(true);
@@ -38,9 +41,9 @@ function FavoriteBtn({ recipe }) {
 
 FavoriteBtn.propTypes = {
   recipe: PropTypes.shape({
-    idDrink: PropTypes.any,
-    idMeal: PropTypes.any,
-  }),
+    idDrink: PropTypes.number,
+    idMeal: PropTypes.number,
+  }).isRequired,
 };
 
 export default FavoriteBtn;

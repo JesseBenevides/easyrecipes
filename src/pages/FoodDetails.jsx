@@ -26,7 +26,7 @@ function FoodDetails({ makingRecipe }) {
     fetchMealByID(recipeId).then((recipe) => setRecipeDetails(recipe));
     fetchRecommendedDrinks().then((meals) => setRecommendedDrinks(meals));
     window.scrollTo(0, 0);
-  }, [recipeId, setRecommendedDrinks]);
+  }, [recipeId, setRecipeDetails, setRecommendedDrinks]);
 
   const recipe = recipeDetails ? recipeDetails[0] : null;
   const ingredientList = mapIngredientList(recipe);

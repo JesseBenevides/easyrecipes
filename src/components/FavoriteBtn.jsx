@@ -9,14 +9,13 @@ import {
 
 function FavoriteBtn({ recipe }) {
   const [isFavorite, setIsFavorite] = useState(true);
-  const recipeId = recipe.idDrink ? recipe.idDrink : recipe.idMeal;
 
   useEffect(() => {
     const favoriteRecipes = getFavoriteRecipes();
     const isRecipeFavorite = favoriteRecipes
-      .some((favRecipe) => favRecipe.id === recipeId);
+      .some((favRecipe) => favRecipe.id === recipe.id);
     setIsFavorite(isRecipeFavorite);
-  }, [isFavorite, recipeId, recipe]);
+  }, [isFavorite, recipe]);
 
   return (
     <button
@@ -24,7 +23,7 @@ function FavoriteBtn({ recipe }) {
       onClick={ () => {
         setIsFavorite(!isFavorite);
         if (isFavorite) {
-          removeRecipeOnFavorites(recipeId);
+          removeRecipeOnFavorites(recipe.id);
         } else {
           saveRecipeOnFavorites(recipe);
         }
@@ -41,8 +40,7 @@ function FavoriteBtn({ recipe }) {
 
 FavoriteBtn.propTypes = {
   recipe: PropTypes.shape({
-    idDrink: PropTypes.number,
-    idMeal: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
 };
 

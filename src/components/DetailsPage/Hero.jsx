@@ -9,6 +9,7 @@ import copy from 'clipboard-copy';
 import shareBtnImg from '../../images/shareIcon.svg';
 import FavoriteBtn from '../FavoriteBtn';
 import RecipesContext from '../../context/RecipesContext';
+import { mapRecipeToFavoriteModel } from '../../helpers/favoritesHelper';
 
 const SHARE_TIMEOUT_MS = 5000;
 
@@ -47,7 +48,7 @@ function Hero({ thumb, title, category, alcoholic }) {
             }
             {showCopyMsg ? 'Link copiado!' : <Image src={ shareBtnImg } />}
           </Button>
-          <FavoriteBtn recipe={ recipeDetails[0] } />
+          <FavoriteBtn recipe={ mapRecipeToFavoriteModel(recipeDetails[0]) } />
         </ButtonToolbar>
       </div>
     </div>

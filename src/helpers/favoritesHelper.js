@@ -42,12 +42,9 @@ export function mapRecipeToFavoriteModel(recipe) {
 }
 
 export function saveRecipeOnFavorites(recipe) {
-  console.log(recipe);
-
   const favoriteRecipes = getFavoriteRecipes();
-  const recipeMapped = mapRecipeToFavoriteModel(recipe);
 
-  favoriteRecipes.push(recipeMapped);
+  favoriteRecipes.push(recipe);
 
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 }

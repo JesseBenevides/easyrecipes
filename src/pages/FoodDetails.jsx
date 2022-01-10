@@ -13,7 +13,7 @@ import { isRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchMealByID, fetchRecommendedDrinks } from '../services/mealAPI';
 
 function FoodDetails({ makingRecipe }) {
-  const [recipeResponse, setRecipeResponse] = useState({});
+  const { details: { recipeDetails, setRecipeDetails } } = useContext(RecipesContext);
   const [isFinishButtonDisabled, setIsFinishButtonDisabled] = useState(true);
   const { recipeId } = useParams();
   const { pathname } = useLocation();
@@ -23,12 +23,12 @@ function FoodDetails({ makingRecipe }) {
   const isInProgress = isRecipeInProgress(recipeId, 'meals');
 
   useEffect(() => {
-    fetchMealByID(recipeId).then((recipe) => setRecipeResponse(recipe));
+    fetchMealByID(recipeId).then((recipe) => setRecipeDetails(recipe));
     fetchRecommendedDrinks().then((meals) => setRecommendedDrinks(meals));
     window.scrollTo(0, 0);
   }, [recipeId, setRecommendedDrinks]);
 
-  const recipe = recipeResponse ? recipeResponse[0] : null;
+  const recipe = recipeDetails ? recipeDetails[0] : null;
   const ingredientList = mapIngredientList(recipe);
   const { strMeal,
     strCategory, strMealThumb,

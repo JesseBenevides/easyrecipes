@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Button,
   ButtonToolbar,
@@ -7,11 +7,14 @@ import {
 } from 'react-bootstrap';
 import copy from 'clipboard-copy';
 import shareBtnImg from '../../images/shareIcon.svg';
+import FavoriteBtn from '../FavoriteBtn';
+import RecipesContext from '../../context/RecipesContext';
 
 const SHARE_TIMEOUT_MS = 5000;
 
 function Hero({ thumb, title, category, alcoholic }) {
   const [showCopyMsg, setShowCopyMsg] = useState(false);
+  const { details: { recipeDetails } } = useContext(RecipesContext);
 
   function handleShare() {
     setShowCopyMsg(true);
@@ -44,7 +47,7 @@ function Hero({ thumb, title, category, alcoholic }) {
             }
             {showCopyMsg ? 'Link copiado!' : <Image src={ shareBtnImg } />}
           </Button>
-          <Button data-testid="favorite-btn" />
+          <FavoriteBtn recipe={ recipeDetails[0] } />
         </ButtonToolbar>
       </div>
     </div>

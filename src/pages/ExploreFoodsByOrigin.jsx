@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
@@ -32,6 +33,7 @@ function ExploreFoodsByOrigin() {
   const renderFoodCard = () => (
     foodList.slice(0, INICIAL_FOODLIST_LENGTH)
       .map((recipe, index) => (
+
         <RecipeCard
           key={ recipe.idMeal }
           id={ recipe.idMeal }
@@ -47,8 +49,14 @@ function ExploreFoodsByOrigin() {
     <>
       <Header pageTitle="Explorar Origem" hasSearch />
       <section>
-        { renderDropdownAreas() }
-        { renderFoodCard() }
+        <Container>
+          <Row>
+            { renderDropdownAreas() }
+          </Row>
+          <Row>
+            { renderFoodCard() }
+          </Row>
+        </Container>
       </section>
       <Footer />
     </>

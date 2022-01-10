@@ -45,6 +45,8 @@ Recommended.propTypes = {
     strCategory: PropTypes.string,
     length: PropTypes.func,
     slice: PropTypes.func,
+  })).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Recommended;

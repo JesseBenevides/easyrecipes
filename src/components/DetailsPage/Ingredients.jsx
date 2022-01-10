@@ -108,4 +108,6 @@ Ingredients.propTypes = {
 
 Ingredients.defaultProps = {
   makingRecipe: false,
+};
+
 export default Ingredients;

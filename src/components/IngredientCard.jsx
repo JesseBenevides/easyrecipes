@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 
 function IngredientCard(props) {
   const { name, img, index } = props;
 
   return (
-    <section>
+    <Col>
       <Card
         style={ { width: '10rem' } }
         className="recomendation"
@@ -22,7 +22,7 @@ function IngredientCard(props) {
           </Card.Title>
         </Card.Body>
       </Card>
-    </section>
+    </Col>
   );
 }
 

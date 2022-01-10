@@ -35,7 +35,7 @@ function FoodDetails() {
 
   return (
     <div className="container">
-      {recipeResponse[0] && (
+      {recipe && (
         <>
           <Hero thumb={ strMealThumb } category={ strCategory } title={ strMeal } />
           <Ingredients ingredientList={ ingredientList } />

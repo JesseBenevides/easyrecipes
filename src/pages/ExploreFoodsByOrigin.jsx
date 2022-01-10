@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
-import { fetchMealAreas, fetchMealsByArea } from '../services/mealAPI';
+import { fetchMealAreas, fetchMealByName, fetchMealsByArea } from '../services/mealAPI';
 import useAPI from '../hooks/useAPI';
 import RecipeCard from '../components/RecipeCard';
 
@@ -12,11 +12,20 @@ function ExploreFoodsByOrigin() {
   const [mealAreas, setMealAreas] = useState([]);
 
   const INICIAL_FOODLIST_LENGTH = 12;
+  useAPI(fetchMealByName, setFoodList, '', INICIAL_FOODLIST_LENGTH);
   useAPI(fetchMealAreas, setMealAreas, '');
-  useAPI(fetchMealsByArea, setFoodList, 'canadian');
+
+  async function getMealsFromAPI(fetchFunction, area) {
+    const meals = await fetchFunction(area);
+    setFoodList(meals);
+  }
+  function onAreaChange({ target: { value } }) {
+    if (value === 'All') getMealsFromAPI(fetchMealByName, '');
+    else getMealsFromAPI(fetchMealsByArea, value);
+  }
 
   const renderDropdownAreas = () => (
-    <select data-testid="explore-by-area-dropdown">
+    <select onChange={ onAreaChange } data-testid="explore-by-area-dropdown">
       <option data-testid="All-option">All</option>
       {mealAreas.map(({ strArea }) => (
         <option

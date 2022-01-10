@@ -53,8 +53,8 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
 
   return (
     <Container>
-      <Row className="justify-content-center">
-        <ButtonGroup aria-label="Basic example">
+      <Row>
+        <ButtonGroup aria-label="Category Filter">
           <Button
             variant="secondary"
             data-testid="All-category-filter"
@@ -64,7 +64,7 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
           </Button>
         </ButtonGroup>
         { categoryList.map((category, index) => (
-          <ButtonGroup key={ index } aria-label="Basic example">
+          <ButtonGroup key={ index } aria-label="Category Filter">
             <Button
               variant="secondary"
               data-testid={ `${category.strCategory}-category-filter` }

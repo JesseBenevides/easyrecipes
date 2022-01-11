@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import LoginLogo from '../components/LoginLogo';
 import RecipesContext from '../context/RecipesContext';
@@ -40,38 +41,39 @@ function Login() {
   return (
     <section className="Login">
       <LoginLogo />
-      <div className="LoginForm">
-        <label htmlFor="email-bar">
-          <input
-            data-testid="email-input"
-            type="email"
-            id="email-bar"
-            placeholder="E-mail"
-            name="email"
-            value={ email }
-            onChange={ handleChangeEmail }
-          />
-        </label>
-        <label htmlFor="password-bar">
-          <input
-            data-testid="password-input"
-            type="password"
-            id="epassword-bar"
-            placeholder="Senha"
-            name="password"
-            value={ password }
-            onChange={ handleChangePassword }
-          />
-        </label>
-        <button
-          type="button"
+      <Form className="LoginForm">
+        <Form.Control
+          className="w-100 mb-2"
+          data-testid="email-input"
+          type="email"
+          id="email-bar"
+          placeholder="E-mail"
+          name="email"
+          value={ email }
+          onChange={ handleChangeEmail }
+        />
+
+        <Form.Control
+          className="w-100 mb-2"
+          data-testid="password-input"
+          type="password"
+          id="epassword-bar"
+          placeholder="Senha"
+          name="password"
+          value={ password }
+          onChange={ handleChangePassword }
+        />
+
+        <Button
+          className="w-100 mb-2"
+          variant="primary"
           data-testid="login-submit-btn"
           disabled={ disable }
           onClick={ handleClick }
         >
           Entrar
-        </button>
-      </div>
+        </Button>
+      </Form>
     </section>
   );
 }

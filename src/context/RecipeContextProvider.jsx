@@ -11,6 +11,7 @@ function RecipeContextProvider({ children }) {
   const [recommendedFoods, setRecommendedFoods] = useState([]);
   const [recommendedDrinks, setRecommendedDrinks] = useState([]);
   const [recipeIngredients, setRecipeIngredients] = useState([]);
+  const [recipeDetails, setRecipeDetails] = useState({});
 
   const contextValue = {
     user: {
@@ -32,6 +33,10 @@ function RecipeContextProvider({ children }) {
       setRecommendedFoods,
       recommendedDrinks,
       setRecommendedDrinks,
+    },
+    details: {
+      recipeDetails,
+      setRecipeDetails,
     },
   };
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Button,
   ButtonToolbar,
@@ -7,14 +7,19 @@ import {
 } from 'react-bootstrap';
 import copy from 'clipboard-copy';
 import shareBtnImg from '../../images/shareIcon.svg';
+import FavoriteBtn from '../FavoriteBtn';
+import RecipesContext from '../../context/RecipesContext';
+import { mapRecipeToFavoriteModel } from '../../helpers/favoritesHelper';
 
 const SHARE_TIMEOUT_MS = 5000;
 
-function Hero({ thumb, title, category, alcoholic = '' }) {
+function Hero({ thumb, title, category, alcoholic }) {
   const [showCopyMsg, setShowCopyMsg] = useState(false);
+  const { details: { recipeDetails } } = useContext(RecipesContext);
 
   function handleShare() {
     setShowCopyMsg(true);
+    copy(window.location.href.replace('/in-progress', ''));
     setTimeout(() => {
       setShowCopyMsg(false);
     }, SHARE_TIMEOUT_MS);
@@ -35,7 +40,6 @@ function Hero({ thumb, title, category, alcoholic = '' }) {
             data-testid="share-btn"
             onClick={ () => {
               handleShare();
-              copy(window.location.href);
             } }
           >
             {
@@ -44,7 +48,7 @@ function Hero({ thumb, title, category, alcoholic = '' }) {
             }
             {showCopyMsg ? 'Link copiado!' : <Image src={ shareBtnImg } />}
           </Button>
-          <Button data-testid="favorite-btn" />
+          <FavoriteBtn recipe={ mapRecipeToFavoriteModel(recipeDetails[0]) } />
         </ButtonToolbar>
       </div>
     </div>
@@ -52,10 +56,14 @@ function Hero({ thumb, title, category, alcoholic = '' }) {
 }
 
 Hero.propTypes = {
-  alcoholic: PropTypes.string.isRequired,
+  alcoholic: PropTypes.string,
   category: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+};
+
+Hero.defaultProps = {
+  alcoholic: '',
 };
 
 export default Hero;

@@ -1,17 +1,20 @@
+import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import FinishRecipeBtn from '../components/DetailsPage/FinishRecipeBtn';
 import Hero from '../components/DetailsPage/Hero';
 import Ingredients from '../components/DetailsPage/Ingredients';
 import Instructions from '../components/DetailsPage/Instructions';
 import Recommended from '../components/DetailsPage/Recommended';
+import StartRecipeButton from '../components/DetailsPage/StartRecipeButton';
 import RecipesContext from '../context/RecipesContext';
 import mapIngredientList from '../helpers/detailsHelper';
-import { isRecipeInProgress, toggleRecipeInProgress } from '../helpers/inprogressHelper';
+import { isRecipeInProgress } from '../helpers/inprogressHelper';
 import { fetchDrinkById, fetchRecommendedMeals } from '../services/cocktailAPI';
 
-function DrikDetails() {
-  const [recipeResponse, setRecipeResponse] = useState({});
+function DrinkDetails({ makingRecipe }) {
+  const { details: { recipeDetails, setRecipeDetails } } = useContext(RecipesContext);
+  const [isFinishButtonDisabled, setIsFinishButtonDisabled] = useState(true);
   const { drinkId } = useParams();
   const { pathname } = useLocation();
   const { recipes:
@@ -19,17 +22,16 @@ function DrikDetails() {
   } = useContext(RecipesContext);
   const isInProgress = isRecipeInProgress(drinkId, 'cocktails');
   useEffect(() => {
-    fetchDrinkById(drinkId).then((recipe) => setRecipeResponse(recipe));
+    fetchDrinkById(drinkId).then((recipe) => setRecipeDetails(recipe));
     fetchRecommendedMeals().then((meals) => setRecommendedFoods(meals));
     window.scrollTo(0, 0);
-  }, [drinkId, setRecommendedFoods]);
+  }, [drinkId, setRecipeDetails, setRecommendedFoods]);
 
-  const recipe = recipeResponse ? recipeResponse[0] : null;
+  const recipe = recipeDetails ? recipeDetails[0] : null;
   const ingredientList = mapIngredientList(recipe);
   const { strDrink,
     strCategory, strDrinkThumb,
     strInstructions,
-    strYoutube,
     strAlcoholic,
   } = recipe || {};
 
@@ -42,29 +44,35 @@ function DrikDetails() {
             alcoholic={ strAlcoholic }
             category={ strCategory }
             title={ strDrink }
+            recipe={ recipeDetails }
           />
-          <Ingredients ingredientList={ ingredientList } />
+          <Ingredients
+            ingredientList={ ingredientList }
+            makingRecipe={ makingRecipe }
+            type="cocktails"
+            recipeId={ drinkId }
+            setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
+          />
           <Instructions instructions={ strInstructions } />
-          <iframe
-            width="420"
-            height="315"
-            src={ strYoutube }
-            title={ `${strDrink} Video` }
-            data-testid="video"
-          />
-          <Recommended type="meals" recipes={ recommendedFoods } />
-          <Link
-            to={ `${pathname}/in-progress` }
-            data-testid="start-recipe-btn"
-            className="fixed-bottom btn-block pb-3"
-            onClick={ () => toggleRecipeInProgress(recipeResponse, 'cocktails') }
-          >
-            { isInProgress ? 'Continuar Receita' : 'Iniciar Receita' }
-          </Link>
+          { !makingRecipe && <Recommended type="meals" recipes={ recommendedFoods } /> }
+          { !makingRecipe ? (
+            <StartRecipeButton
+              to={ pathname }
+              isInProgress={ isInProgress }
+            />
+          ) : <FinishRecipeBtn isFinishButtonDisabled={ isFinishButtonDisabled } /> }
         </>
       )}
     </div>
   );
 }
 
-export default DrikDetails;
+DrinkDetails.propTypes = {
+  makingRecipe: PropTypes.bool,
+};
+
+DrinkDetails.defaultProps = {
+  makingRecipe: false,
+};
+
+export default DrinkDetails;

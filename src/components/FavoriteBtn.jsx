@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import favoriteWhiteBtnIcon from '../images/whiteHeartIcon.svg';
 import favoriteBlackBtnIcon from '../images/blackHeartIcon.svg';
 import {
@@ -18,7 +19,8 @@ function FavoriteBtn({ recipe }) {
   }, [isFavorite, recipe]);
 
   return (
-    <button
+    <Button
+      variant="light"
       type="button"
       onClick={ () => {
         setIsFavorite(!isFavorite);
@@ -34,7 +36,7 @@ function FavoriteBtn({ recipe }) {
         alt="Favorite Button"
         data-testid="favorite-btn"
       />
-    </button>
+    </Button>
   );
 }
 

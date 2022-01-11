@@ -6,9 +6,9 @@ const MAX_LENGHT = 6;
 
 function Recommended({ recipes, type }) {
   return (
-    <div>
+    <div className="mb-6">
       <h3>Recomendadas</h3>
-      <div className="d-flex" style={ { width: '400px', overflowX: 'scroll' } }>
+      <div className="d-flex" style={ { overflowX: 'scroll' } }>
         {recipes.length
           && recipes.slice(0, MAX_LENGHT).map((recipe, index) => {
             if (type === 'meals') {

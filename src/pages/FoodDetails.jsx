@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
 import { useLocation, useParams } from 'react-router';
 import FinishRecipeBtn from '../components/DetailsPage/FinishRecipeBtn';
 import Hero from '../components/DetailsPage/Hero';
@@ -37,7 +38,7 @@ function FoodDetails({ makingRecipe }) {
   } = recipe || {};
 
   return (
-    <div className="container">
+    <Container className="py-6">
       {recipe && (
         <>
           <Hero thumb={ strMealThumb } category={ strCategory } title={ strMeal } />
@@ -49,13 +50,16 @@ function FoodDetails({ makingRecipe }) {
             setIsFinishButtonDisabled={ setIsFinishButtonDisabled }
           />
           <Instructions instructions={ strInstructions } />
-          { !makingRecipe && <iframe
-            width="420"
-            height="315"
-            src={ strYoutube.replace('watch?v=', 'embed/') }
-            title={ `${strMeal} Video` }
-            data-testid="video"
-          /> }
+          { !makingRecipe && (
+            <div className="embed-responsive embed-responsive-16by9 my-4">
+              <iframe
+                className="embed-responsive-item"
+                src={ strYoutube.replace('watch?v=', 'embed/') }
+                title={ `${strMeal} Video` }
+                data-testid="video"
+              />
+            </div>
+          ) }
           { !makingRecipe && <Recommended type="drinks" recipes={ recommendedDrinks } /> }
           { !makingRecipe ? (
             <StartRecipeButton
@@ -65,7 +69,7 @@ function FoodDetails({ makingRecipe }) {
           ) : <FinishRecipeBtn isFinishButtonDisabled={ isFinishButtonDisabled } /> }
         </>
       )}
-    </div>
+    </Container>
   );
 }
 

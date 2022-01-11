@@ -30,8 +30,8 @@ function Profile() {
   return (
     <div>
       <Header pageTitle="Perfil" />
-      <div className="d-flex flex-column align-items-center">
-        <h2 className="mb-2 mt-4" data-testid="profile-email">{ email }</h2>
+      <div className="d-flex flex-column align-items-center p-4">
+        <h2 className="mb-4 mt-4" data-testid="profile-email">{ email }</h2>
         <Button
           className="w-75 mb-2 mt-4"
           size="lg"

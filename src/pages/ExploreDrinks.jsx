@@ -18,7 +18,7 @@ function ExploreDrinks() {
   return (
     <>
       <Header pageTitle="Explorar Bebidas" />
-      <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center mt-4">
         <Button
           className="w-75 mb-2 mt-4"
           size="lg"

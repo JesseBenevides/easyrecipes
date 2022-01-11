@@ -10,7 +10,7 @@ function Explorer() {
   return (
     <>
       <Header pageTitle="Explorar" />
-      <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center mt-4">
         <Button
           className="w-75 mb-2 mt-4"
           size="lg"

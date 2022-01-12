@@ -1,22 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import drinkIcon from '../images/drinkIcon.svg';
-import exploreIcon from '../images/mealIcon.svg';
+import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Explorer() {
+  const history = useHistory();
+
   return (
     <>
       <Header pageTitle="Explorar" />
-      <div>
-        <Link src={ drinkIcon } to="explorar/bebidas" data-testid="explore-drinks">
+      <div className="d-flex flex-column align-items-center mt-4">
+        <Button
+          className="w-75 mb-2 mt-4"
+          size="lg"
+          variant="secondary"
+          data-testid="explore-drinks"
+          onClick={ () => history.push('/explorar/bebidas') }
+        >
           Explorar Bebidas
-        </Link>
+        </Button>
 
-        <Link src={ exploreIcon } to="/explorar/comidas" data-testid="explore-food">
+        <Button
+          className="w-75 mb-2"
+          size="lg"
+          variant="secondary"
+          data-testid="explore-food"
+          onClick={ () => history.push('/explorar/comidas') }
+        >
           Explorar Comidas
-        </Link>
+        </Button>
 
       </div>
       <Footer />

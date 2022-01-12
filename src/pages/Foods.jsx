@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CardGroup, Container, Row } from 'react-bootstrap';
+import { CardGroup, Container } from 'react-bootstrap';
 import CategoriesFilterButtons from '../components/CategoriesFilterButtons';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
@@ -57,6 +57,7 @@ function Foods() {
     <>
       <Header pageTitle="Comidas" hasSearch recipeType="food" />
       <section>
+        {renderFoodCategories()}
         <Container>
           { renderFoodCategories() }
           { renderFoodCard() }

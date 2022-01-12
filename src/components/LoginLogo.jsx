@@ -1,17 +1,15 @@
 import React from 'react';
-import rockGlass from '../images/rockGlass.svg';
+import easyRecipesLogo from '../images/easyRecipesLogo.png';
 
 function LoginLogo() {
   return (
     <div className="LoginLogo">
-      <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object>
+      <img
+        className="easyRecipes"
+        src={ easyRecipesLogo }
+        alt="Easy Recipes Logo"
+      />
+
     </div>
   );
 }

@@ -1,6 +1,6 @@
 .Login {
   align-items: center;
-  background: #0fa36b;
+  background: white;
   color: #464646;
   display: flex;
   flex-direction: column;
@@ -10,12 +10,11 @@
   width: 100%;
 }
 
-.rocksGlass {
-  animation: shake 1s infinite ease;
-  max-height: 20vh;
+.easyRecipes {
+  max-width: 65%;
 }
 
-.LoginLogo > .logo {
+/* .LoginLogo > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
   font-family: Montserrat , sans-serif;
@@ -51,7 +50,7 @@
   100% {
     transform: rotate(-10deg);
   }
-}
+} */
 
 .LoginLogo, .LoginForm {
   align-items: center;

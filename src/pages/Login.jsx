@@ -17,16 +17,18 @@ function Login() {
     const regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
     if ((regex.test(email)) && (password.length >= NUMERO_MINIMO)) {
       setDisable(false);
+    } else {
+      setDisable(true);
     }
   };
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
+  const handleChangeEmail = ({ target: { value } }) => {
+    setEmail(value);
     validate();
   };
 
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
+  const handleChangePassword = ({ target: { value } }) => {
+    setPassword(value);
     validate();
   };
 
@@ -48,6 +50,7 @@ function Login() {
           type="email"
           id="email-bar"
           placeholder="E-mail"
+          autoComplete="username"
           name="email"
           value={ email }
           onChange={ handleChangeEmail }
@@ -59,6 +62,7 @@ function Login() {
           type="password"
           id="epassword-bar"
           placeholder="Senha"
+          autoComplete="current-password"
           name="password"
           value={ password }
           onChange={ handleChangePassword }

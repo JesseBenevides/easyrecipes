@@ -3,8 +3,8 @@ import React from 'react';
 
 function Instructions({ instructions }) {
   return (
-    <div>
-      <h3>Instruções</h3>
+    <div className="mb-3">
+      <h3 className="mb-4">Instruções</h3>
       <p data-testid="instructions">{ instructions }</p>
     </div>
   );

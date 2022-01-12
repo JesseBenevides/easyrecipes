@@ -25,7 +25,11 @@ function ExploreFoodsByOrigin() {
   }
 
   const renderDropdownAreas = () => (
-    <select onChange={ onAreaChange } data-testid="explore-by-area-dropdown">
+    <select
+      className="custom-select mt-4 mb-4 w-75"
+      onChange={ onAreaChange }
+      data-testid="explore-by-area-dropdown"
+    >
       <option data-testid="All-option">All</option>
       {mealAreas.map(({ strArea }) => (
         <option
@@ -59,7 +63,7 @@ function ExploreFoodsByOrigin() {
       <Header pageTitle="Explorar Origem" hasSearch />
       <section>
         <Container>
-          <Row>
+          <Row className="justify-content-center">
             { renderDropdownAreas() }
           </Row>
           <Row>

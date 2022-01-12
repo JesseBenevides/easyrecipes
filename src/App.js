@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router';
 import Login from './pages/Login';
 import Drinks from './pages/Drinks';
 import Foods from './pages/Foods';
-import RecipeInProgress from './pages/RecipeInProgress';
 import Explorer from './pages/Explorer';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
@@ -24,10 +23,20 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Foods } />
       <Route exact path="/bebidas" component={ Drinks } />
-      <Route path="/comidas/:recipeId" component={ FoodDetails } />
-      <Route path="/bebidas/:drinkId" component={ DrinkDetails } />
-      <Route path="/comidas/:recipeId/in-progress" component={ RecipeInProgress } />
-      <Route path="/bebidas/:drinkId/in-progress" component={ RecipeInProgress } />
+      <Route exact path="/comidas/:recipeId" component={ FoodDetails } />
+      <Route exact path="/bebidas/:drinkId" component={ DrinkDetails } />
+      <Route
+        path="/bebidas/:drinkId/in-progress"
+        render={ () => (
+          <DrinkDetails makingRecipe />
+        ) }
+      />
+      <Route
+        path="/comidas/:recipeId/in-progress"
+        render={ () => (
+          <FoodDetails makingRecipe />
+        ) }
+      />
       <Route exact path="/explorar" component={ Explorer } />
       <Route exact path="/explorar/comidas" component={ ExploreFoods } />
       <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />

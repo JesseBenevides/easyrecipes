@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Container } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import RecipesContext from '../context/RecipesContext';
 import { validateFirstLetterSearch,
@@ -55,53 +55,57 @@ function Search({ recipeType }) {
   }
 
   return (
-    <Form onSubmit={ searchRecipe }>
-      <Form.Group>
-        <Form.Control
-          onChange={ onChangeSearchBar }
-          data-testid="search-input"
-          placeholder="Pesquisar receita..."
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Check
-          type="radio"
-          label="Ingrediente"
-          name="filter"
-          id="ingredient-radio"
-          data-testid="ingredient-search-radio"
-          onChange={ () => onChangeFilter(
-            isFood ? fetchMealsByIngredient : fetchDrinksByIngredient,
-          ) }
-        />
-        <Form.Check
-          type="radio"
-          label="Nome"
-          name="filter"
-          id="name-radio"
-          data-testid="name-search-radio"
-          onChange={ () => onChangeFilter(isFood ? fetchMealByName : fetchDrinkByName) }
-        />
-        <Form.Check
-          type="radio"
-          label="Primeira letra"
-          name="filter"
-          id="first-letter-radio"
-          data-testid="first-letter-search-radio"
-          onChange={ () => onChangeFilter(
-            isFood ? fetchMealsByFirstLetter : fetchDrinksByFirstLetter,
-          ) }
-        />
-      </Form.Group>
-      <Button type="submit" data-testid="exec-search-btn">
-        Buscar
-      </Button>
-      {isSingleRecipe && (
-        <Redirect
-          to={ `${RECIPE_DETAILS_ENDPOINT}${getFirstId()}` }
-        />
-      )}
-    </Form>
+    <Container>
+      <Form onSubmit={ searchRecipe } className="d-flex flex-column">
+        <Form.Group>
+          <Form.Control
+            onChange={ onChangeSearchBar }
+            data-testid="search-input"
+            placeholder="Pesquisar receita..."
+            className="mt-3"
+          />
+        </Form.Group>
+        <Form.Group className="d-flex justify-content-around">
+          <Form.Check
+            type="radio"
+            label="Ingrediente"
+            className="filter-radio"
+            name="filter"
+            id="ingredient-radio"
+            data-testid="ingredient-search-radio"
+            onChange={ () => onChangeFilter(
+              isFood ? fetchMealsByIngredient : fetchDrinksByIngredient,
+            ) }
+          />
+          <Form.Check
+            type="radio"
+            label="Nome"
+            name="filter"
+            id="name-radio"
+            data-testid="name-search-radio"
+            onChange={ () => onChangeFilter(isFood ? fetchMealByName : fetchDrinkByName) }
+          />
+          <Form.Check
+            type="radio"
+            label="Primeira letra"
+            name="filter"
+            id="first-letter-radio"
+            data-testid="first-letter-search-radio"
+            onChange={ () => onChangeFilter(
+              isFood ? fetchMealsByFirstLetter : fetchDrinksByFirstLetter,
+            ) }
+          />
+        </Form.Group>
+        <Button className="mx-auto mb-3 px-4" type="submit" data-testid="exec-search-btn">
+          Buscar
+        </Button>
+        {isSingleRecipe && (
+          <Redirect
+            to={ `${RECIPE_DETAILS_ENDPOINT}${getFirstId()}` }
+          />
+        )}
+      </Form>
+    </Container>
   );
 }
 

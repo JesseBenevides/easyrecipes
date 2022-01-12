@@ -10,27 +10,29 @@ function Header({ pageTitle, hasSearch, recipeType }) {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <Navbar className="Header">
-      <Button variant="link">
-        <Link to="/perfil">
-          <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
-        </Link>
-      </Button>
-      <Navbar.Brand data-testid="page-title">{ pageTitle }</Navbar.Brand>
-      { hasSearch && (
-        <Button
-          variant="link"
-          onClick={ () => setShowSearch(!showSearch) }
-        >
-          <img
-            src={ searchIcon }
-            data-testid="search-top-btn"
-            alt="Profile Icon"
-          />
+    <header className="Header">
+      <Navbar className="justify-content-between">
+        <Button variant="link">
+          <Link to="/perfil">
+            <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
+          </Link>
         </Button>
-      ) }
+        <Navbar.Brand data-testid="page-title">{ pageTitle }</Navbar.Brand>
+        { hasSearch && (
+          <Button
+            variant="link"
+            onClick={ () => setShowSearch(!showSearch) }
+          >
+            <img
+              src={ searchIcon }
+              data-testid="search-top-btn"
+              alt="Profile Icon"
+            />
+          </Button>
+        ) }
+      </Navbar>
       { showSearch && <Search recipeType={ recipeType } /> }
-    </Navbar>
+    </header>
   );
 }
 

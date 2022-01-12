@@ -80,8 +80,8 @@ function Ingredients({
   }, [ingredientList.length, recipeProgress, recipeId, setIsFinishButtonDisabled]);
 
   return (
-    <div>
-      <h3>Ingredientes</h3>
+    <div className="mb-4">
+      <h3 className="mb-3">Ingredientes</h3>
       {makingRecipe
         ? renderIngredientSteps({
           ingredientList,

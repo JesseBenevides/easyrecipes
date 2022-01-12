@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { CardGroup, Container, Row } from 'react-bootstrap';
 import CategoriesFilterButtons from '../components/CategoriesFilterButtons';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
@@ -33,16 +33,19 @@ function Foods() {
       list = foodList.slice(0, INICIAL_FOODLIST_LENGTH);
     }
     return (
-      list.map((recipe, index) => (
-        <RecipeCard
-          key={ recipe.idMeal }
-          id={ recipe.idMeal }
-          name={ recipe.strMeal }
-          image={ recipe.strMealThumb }
-          index={ index }
-          type="comidas"
-        />
-      ))
+      <CardGroup className="d-flex flex-wrap justify-content-center mt-2 mb-6">
+        { list.map((recipe, index) => (
+          <RecipeCard
+            key={ recipe.idMeal }
+            id={ recipe.idMeal }
+            name={ recipe.strMeal }
+            image={ recipe.strMealThumb }
+            index={ index }
+            type="comidas"
+          />
+        ))}
+      </CardGroup>
+
     );
   };
 
@@ -55,14 +58,8 @@ function Foods() {
       <Header pageTitle="Comidas" hasSearch recipeType="food" />
       <section>
         <Container>
-          <Row>
-            {renderFoodCategories()}
-          </Row>
-        </Container>
-        <Container>
-          <Row>
-            { renderFoodCard() }
-          </Row>
+          { renderFoodCategories() }
+          { renderFoodCard() }
         </Container>
       </section>
       <Footer />

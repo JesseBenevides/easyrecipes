@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Button, ButtonGroup, Container, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, ButtonToolbar, Container, Row } from 'react-bootstrap';
 import RecipesContext from '../context/RecipesContext';
 import { fetchMealByName, fetchMealsByCategories } from '../services/mealAPI';
 import { fetchDrinkByName, fetchDrinksByCategories } from '../services/cocktailAPI';
@@ -52,31 +52,30 @@ function CategoriesFilterButtons({ categoryList, recipeType }) {
   }
 
   return (
-    <Container>
-      <Row>
-        <ButtonGroup aria-label="Category Filter">
-          <Button
-            variant="secondary"
-            data-testid="All-category-filter"
-            onClick={ handleButtonAllClick }
-          >
-            All
-          </Button>
-        </ButtonGroup>
-        { categoryList.map((category, index) => (
-          <ButtonGroup key={ index } aria-label="Category Filter">
-            <Button
-              variant="secondary"
-              data-testid={ `${category.strCategory}-category-filter` }
-              name={ category.strCategory }
-              onClick={ handleCategoriesButtonClick }
-            >
-              {category.strCategory}
-            </Button>
-          </ButtonGroup>
-        ))}
-      </Row>
-    </Container>
+    <ButtonToolbar className="justify-content-center my-2" aria-label="Category Filter">
+
+      <Button
+        variant="secondary"
+        data-testid="All-category-filter"
+        className="mx-1 my-1"
+        onClick={ handleButtonAllClick }
+      >
+        All
+      </Button>
+      { categoryList.map((category, index) => (
+        <Button
+          key={ index }
+          variant="secondary"
+          className="mx-1 my-1"
+          data-testid={ `${category.strCategory}-category-filter` }
+          name={ category.strCategory }
+          onClick={ handleCategoriesButtonClick }
+        >
+          {category.strCategory}
+        </Button>
+      ))}
+    </ButtonToolbar>
+
   );
 }
 

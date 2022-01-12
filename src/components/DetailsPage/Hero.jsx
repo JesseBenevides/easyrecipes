@@ -26,17 +26,24 @@ function Hero({ thumb, title, category, alcoholic }) {
   }
 
   return (
-    <div>
-      <div>
-        <Image data-testid="recipe-photo" src={ thumb } alt={ title } thumbnail />
+    <div className="py-2">
+      <div className="my-2 d-flex justify-content-center">
+        <Image className="rounded-circle" data-testid="recipe-photo" src={ thumb } alt={ title } style={ { width: '60vw' } } thumbnail />
       </div>
       <div>
         <div>
-          <h2 data-testid="recipe-title">{title}</h2>
-          <h3 data-testid="recipe-category">{`${alcoholic} ${category}`}</h3>
+          <h2 className="text-center" data-testid="recipe-title">{title}</h2>
+          <h3
+            className="text-center"
+            data-testid="recipe-category"
+          >
+            {`${alcoholic} ${category}`}
+
+          </h3>
         </div>
-        <ButtonToolbar>
+        <ButtonToolbar className="justify-content-center my-4">
           <Button
+            variant="light"
             data-testid="share-btn"
             onClick={ () => {
               handleShare();

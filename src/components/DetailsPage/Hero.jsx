@@ -28,7 +28,14 @@ function Hero({ thumb, title, category, alcoholic }) {
   return (
     <div className="py-2">
       <div className="my-2 d-flex justify-content-center">
-        <Image className="rounded-circle" data-testid="recipe-photo" src={ thumb } alt={ title } style={ { width: '60vw' } } thumbnail />
+        <Image
+          className="rounded-circle"
+          style={ { width: '60vw' } }
+          src={ thumb }
+          alt={ title }
+          thumbnail
+          data-testid="recipe-photo"
+        />
       </div>
       <div>
         <div>

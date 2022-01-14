@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Button, ButtonGroup, ButtonToolbar, Container, Row } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 import RecipesContext from '../context/RecipesContext';
 import { fetchMealByName, fetchMealsByCategories } from '../services/mealAPI';
 import { fetchDrinkByName, fetchDrinksByCategories } from '../services/cocktailAPI';

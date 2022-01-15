@@ -23,12 +23,12 @@
 }
 
 .Header {
-  background-color: #c4c4c4;
+  background-color: #379061;
   width: 100%;
 }
 
 .Footer {
-  background-color: #c4c4c4;
+  background-color: #379061;
   bottom: 0;
   display: flex;
   justify-content: space-between;

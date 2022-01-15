@@ -14,44 +14,6 @@
   max-width: 65%;
 }
 
-/* .LoginLogo > .logo {
-  animation: shake 1.5s infinite ease;
-  color: aliceblue;
-  font-family: Montserrat , sans-serif;
-  font-size: 2.8em;
-  font-weight: 900;
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(5deg);
-  }
-
-  50% {
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes clink {
-
-  0% {
-    transform: rotate(-10deg);
-  }
-
-  50% {
-    transform: rotate(20deg);
-  }
-
-  100% {
-    transform: rotate(-10deg);
-  }
-} */
-
 .LoginLogo, .LoginForm {
   align-items: center;
   display: flex;
@@ -62,7 +24,6 @@
 
 .Header {
   background-color: #c4c4c4;
-  opacity: 85%;
   width: 100%;
 }
 
@@ -72,7 +33,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  opacity: 85%;
   padding: 0.3rem;
   position: fixed;
   width: 100%;

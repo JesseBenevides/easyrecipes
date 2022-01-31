@@ -15,5 +15,9 @@
  - Biblioteca clipboard-copy
  - API TheMealDB
  - API TheCocktailDB
+ 
+`Projeto em desenvolvimento`
 
-(Projeto em desenvolvimento)
+---
+ Fique à vontade pra testar a aplicação em:
+[EasyRecipes](https://easyrecipes-eight.vercel.app)

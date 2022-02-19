@@ -24,5 +24,6 @@
 
 ou faça o clone do projeto na sua máquina:
 - `git clone git@github.com:JesseBenevides/easyrecipes.git`
+- Dentro da pasta  `easyrecipes` faça:
 - `npm install`
 - `npm start`

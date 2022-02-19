@@ -21,3 +21,8 @@
 ---
  Fique à vontade pra testar a aplicação em:
 [EasyRecipes](https://easyrecipes-eight.vercel.app)
+
+ou faça o clone do projeto na sua máquina:
+- `git clone git@github.com:JesseBenevides/easyrecipes.git`
+- `npm install`
+- `npm start`
